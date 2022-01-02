@@ -1,10 +1,10 @@
 <!-- https://docs.microsoft.com/en-us/dotnet/core/tools/dotnet-new-sdk-templates#web-options -->
 
-# Web Client (Front-End) Setup and Form Input via the Contact Page
+# Web Client (Front-End) Setup and Form Input via a Contact Page
 
-> This is the **first** in a series of demos where we will be building a website to manage information on the **WestWind** traders website.
+> This is the **first** in a series of demos where we will be building a website to manage information about the **WestWind** traders.
 >
-> **This set is cumulative**; future exercises in this series will build upon previous exercises.
+> **This set is cumulative**; future demos in this series will build upon previous demos.
 
 ## Overview
 
@@ -18,9 +18,9 @@ dotnet new webapp -n webapp -o webapp -au None
 # Or with Authentication
 dotnet new webapp -n webapp -o webapp -au Individual
 #Create a solution to use with Visual Studio 2022
-dotnet new sln -n WestWind
+dotnet new sln -n solution
 # Add the project to the solution
-dotnet sln "WestWind.sln" add webapp\webapp.csproj
+dotnet sln "solution.sln" add webapp\webapp.csproj
 ```
 
 To ensure that your web application works, build and run your project.
@@ -37,13 +37,13 @@ A browser window should open (https://localhost:5001). If you get a certificate 
 ```csharp
 dotnet dev-certs https --trust
 ```
-Alternately you could build and run from the *src/* folder. If you would like to test this out first make sure you are in the *src/* folder and then type `dotnet build "WestWind.sln"`. At this point, you could continue either with VS Code (type `dotnet watch run -p webapp\webapp.csproj` from the *src/* folder) or use VS 2019 by double-clicking the "WestWind.sln" in windows file explorer.
+Alternately you could build and run from the *src/* folder. If you would like to test this out first make sure you are in the *src/* folder and then type `dotnet build "solution.sln"`. At this point, you could continue either with VS Code (type `dotnet watch run -p webapp\webapp.csproj` from the *src/* folder) or use VS 2019 by double-clicking the "solution.sln" in windows file explorer.
 
 ### Modify `Index.cshtml`
 
 We will modify the home page to include the following.
 
-- The title of the site (**WestWind**)
+- The title of the site (**WestWind Traders**)
 - A simple logo for the site. Create an `images` folder in `wwwroot` and store an image there. Get a random image from the web as a jpg or png.
 - One paragraph welcome and summary description of the site.
 
@@ -73,6 +73,6 @@ dotnet build
 dotnet watch run
 ```
 
-In Contact.cshtml add a "Contact" page with a form (`method="POST"`) to allow the user to send information to the server. The form will include many form elements that may be used in the future.
+In Contact.cshtml we will add a "Contact" page with a form (`method="POST"`) to allow the user to send information to the server. The form will include many form elements that may be used in future webapps.
 
 In the Contact.cshtml.cs file we will add C# code in the methods OnGet(), and OnPost(), to process the form's input by echoing back all of the data entered by the user in a "SuccessMessage".
