@@ -159,9 +159,11 @@ builder.Services.AddRazorPages();
 
 // Get the connection string.
 var connectionString = builder.Configuration.GetConnectionString("WWDB");
+
 // TrainWatchContext class as a DbContext using SQL Server
 builder.Services.AddDbContext<Context>(context => 
     context.UseSqlServer(connectionString));
+
 // TrainWatchServices class as a transient service
 builder.Services.AddTransient<DbVersionServices>();
 
@@ -182,8 +184,6 @@ In addition, you will need to set up the database connection string in the `apps
 
 Create an `About.cshtml`/`About.cshtml.cs` Razor Page to display the database version information. The Page Model class must declare in its constructor a dependency on the `DbVersionServices` class. 
 
-On this page, display the database version information from the DbVersion table of the database.
-
 ```csharp
 # From the src/ folder
 cd webapp
@@ -192,6 +192,7 @@ dotnet new page -n About -o Pages
 
 We need to add a menu item so that this page can be navigated to using the main menu; we will use the text "About" for the link.
 
+On this page, we will display the database version information from the DbVersion table of the database.
 We will add the following code to the `About.cshtml` file:
 
 ```csharp
