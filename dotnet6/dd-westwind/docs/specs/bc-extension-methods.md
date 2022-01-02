@@ -8,7 +8,7 @@
 
 We will modify our existing app to allow us to take advantage of `extension methods` in C#.
 
-### Register Context and Services but using extension methods in the backend
+### Register Context and Services but using extension methods in the Back-End
 
 We must configure the following services in our webapp.
 
@@ -31,7 +31,9 @@ builder.Services.AddRazorPages();
 // Get the connection string.
 var connectionString = builder.Configuration.GetConnectionString("WWDB");
 
-
+// Call the Backend Extension Method to register services
+builder.Services.AddBackendDependencies(options =>
+    options.UseSqlServer(connectionString));
 
 var app = builder.Build();
 ```
@@ -39,8 +41,10 @@ NOTE: The new code must be between the `builder.Services.AddRazorPages();` and `
 
 ### Extension Methods File
 
-Inside our class library `webclasslib`, we will create a new file that is called `BackendExtensions.cs` which will contain the `BackendExtensions` class:
+Inside our class library `webclasslib` folder, we will create a new file that is called `BackendExtensions.cs` which will contain the `BackendExtensions` class:
 .
+
+We will add the following code to the file `BackendExtensions.cs`:
 
 ```csharp
 using System;
@@ -72,5 +76,13 @@ namespace webclasslib
         }
     }
 }
+```
 
+To ensure that our web application works, build and run the project.
+
+```csharp
+# From the src/ folder
+cd webapp
+dotnet build
+dotnet watch run
 ```

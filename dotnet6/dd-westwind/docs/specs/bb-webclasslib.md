@@ -6,13 +6,13 @@
 
 ## Overview
 
-We will create an additional project for the Entity, DLL, and BLL classes. We will also be creating a new page to test that the database configuration has been set up correctly.
+We will create an additional class library project for the Entity, DLL, and BLL classes. We will also be creating a new page to test that the database configuration has been set up correctly.
 
 ### Install Database
 
 A new database called [WestWind](./WestWind.dacpac) has been supplied to you for this demo. 
 
-Use Microsoft SQL Management Studio to deploy the `WestWind.dacpac` file to the database.
+Use Microsoft SQL Management Studio to deploy the `WestWind.dacpac` file to the database. Remember to use the `Import Data-tier Application` option.
 
 ### Server (Back-End) Set Up
 
@@ -20,7 +20,7 @@ In this task, we will be creating an additional project for the "back-end" of th
 
 ```csharp
 # From the src/ folder
-# Create a Class Library which will be the Web Server (Back-End)
+# Create a Class Library which will be the Back-End
 dotnet new classlib -n webclasslib -o webclasslib
 # Allow the webapp project to use the classlib project by referencing it.
 dotnet add webapp/webapp.csproj reference webclasslib/webclasslib.csproj
@@ -28,7 +28,7 @@ dotnet add webapp/webapp.csproj reference webclasslib/webclasslib.csproj
 dotnet sln "solution.sln" add webclasslib\webclasslib.csproj
 ```
 
-To ensure that your web application works, build and run your project.
+To ensure that our web application works, build and run the project.
 
 ```csharp
 # From the src/ folder
@@ -41,7 +41,7 @@ Alternately you could build and run from the *src/* folder. If you would like to
 
 ### Entity Framework
 
-We will be using the **Microsoft.EntityFrameworkCore.SqlServer** NuGet package to connect to this database. Add this NuGet package to the class library project.
+We will be using the **Microsoft.EntityFrameworkCore.SqlServer** NuGet package to connect to our database. Add this NuGet package to the class library project.
 
 ```csharp
 # From the src/ folder
@@ -51,7 +51,7 @@ dotnet add package Microsoft.EntityFrameworkCore.SqlServer
 
 ### Server Framework
 
-Inside our class library `webclasslib`, we will create three folders: "Entities", "DAL", and "BLL". 
+Inside our class library `webclasslib` folder, we will create three folders: "Entities", "DAL", and "BLL". 
 
 ### Entities
 
@@ -63,22 +63,53 @@ We will make the namespace as follows:  `namespace Entities`.
 
 For the `BuildVersion` entity, we will override the `.ToString()` method to display the version information as a string. We will use appropriate formatting - one that would be suitable for either web or console applications.
 
+
+We will add the following code to the `BuildVersion.cs` file:
+
+```csharp
+using System; //need for DateTime
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
+
+namespace Entities 
+{
+    [Table("BuildVersion")]
+    public class BuildVersion
+    {
+        [Key]
+        public int Id { get; set; }
+        public int Major { get; set; }
+        public int Minor { get; set; }
+        public int Build { get; set; }
+        [Column(TypeName = "datetime")]
+        public DateTime ReleaseDate { get; set; }
+
+        public override string ToString() 
+        {
+		    return $"Id: {Id}, Major: {Major}, Minor: {Minor}, Build: {Build}, Release Date: {ReleaseDate}";
+	    }
+    }
+}
+```
+
 ### DAL Context
 
 In the "DAL" folder, we will create a file called `Context.cs` which will contain the `Context` class and ensure it inherits from `DbContext`:
+
+We will add the following code to the `Context.cs` file:
 
 ```csharp
 using Microsoft.EntityFrameworkCore;
 using Entities;
 
-namespace DAL {
-//DAL is short for Data Access Layer
-    public class Context : DbContext {
-        //constructor
-        //inject the options which will tell the database context class where to access the database
+namespace DAL 
+{
+    public class Context : DbContext 
+    {
         public Context(DbContextOptions<Context> options)
             : base(options) {}
-        public DbSet<DbVersion> DbVersion { get; set; }
+    
+        public DbSet<BuildVersion> BuildVersion { get; set; }
     }
 }
 ```
@@ -87,6 +118,8 @@ namespace DAL {
 In the "BLL" folder of our class library we will add the file `DbVersionServices.cs` that will hold the class `DbVersionServices`. This class must have a constructor that requires an instance of the `Context` class.
 
 In this class, we will create a public method called `GetDbVersion()` that has no parameters and returns an instance of the `DbVersion` entity. The related database table should only have one row, so you can return that first item from the database context.
+
+We will add the following code to the `DbVersionServices.cs` file:
 
 ```csharp
 using System;
@@ -123,7 +156,7 @@ We must configure the following services in our webapp.
 - `DbVersionServices` class as a transient service
 
 #### DOTNET 5
-In the startup.cs file include the following:
+In the `startup.cs` file include the following:
 ```csharp
 //using statements added
 using Microsoft.EntityFrameworkCore;
@@ -145,7 +178,7 @@ public void ConfigureServices(IServiceCollection services)
     }
 ```
 #### DOTNET 6
-In the Program.cs file include the following:
+In the `Program.cs` file include the following:
 ```csharp
 //using statements added
 using Microsoft.EntityFrameworkCore;
@@ -192,7 +225,8 @@ dotnet new page -n About -o Pages
 
 We need to add a menu item so that this page can be navigated to using the main menu; we will use the text "About" for the link.
 
-On this page, we will display the database version information from the DbVersion table of the database.
+On the `About` page, we will display the database version information from the DbVersion table of the database.
+
 We will add the following code to the `About.cshtml` file:
 
 ```csharp
@@ -222,7 +256,7 @@ We will add the following code to the `About.cshtml` file:
 </table>
 ```
 
-We will add the following code to the `About.html.cs` file:
+We will add the following code to the `About.cshtml.cs` file:
 
 ```csharp
 using System;

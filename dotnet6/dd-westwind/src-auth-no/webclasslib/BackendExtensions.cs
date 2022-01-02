@@ -12,7 +12,7 @@ using BLL;
 
 namespace webclasslib
 {
-    public static class BackendStartupExtensions
+    public static class BackendExtensions
     {
         public static void AddBackendDependencies(this IServiceCollection services, Action<DbContextOptionsBuilder> options)
         {
