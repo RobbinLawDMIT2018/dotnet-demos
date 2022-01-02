@@ -7,10 +7,10 @@ using DAL;
 
 namespace BLL 
 {
-    public class DbServices 
+    public class DbVersionServices 
     {
         private readonly Context Context;
-        public  DbServices(Context context) 
+        public  DbVersionServices(Context context) 
         {
             if (context == null)
                 throw new ArgumentNullException();

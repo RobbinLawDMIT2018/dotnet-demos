@@ -2,6 +2,8 @@
 using Microsoft.EntityFrameworkCore;
 using DAL;
 using BLL;
+using webclasslib;
+using System.Configuration;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -10,11 +12,17 @@ builder.Services.AddRazorPages();
 
 // Get the connection string.
 var connectionString = builder.Configuration.GetConnectionString("WWDB");
-// TrainWatchContext class as a DbContext using SQL Server
-builder.Services.AddDbContext<Context>(context => 
-    context.UseSqlServer(connectionString));
-// TrainWatchServices class as a transient service
-builder.Services.AddTransient<DbServices>();
+
+// Context class as a DbContext using SQL Server
+// builder.Services.AddDbContext<Context>(context => 
+//     context.UseSqlServer(connectionString));
+
+// DbServices class as a transient service
+//builder.Services.AddTransient<DbVersionServices>();
+
+// Call the Backend Startup Extension to register services
+builder.Services.AddBackendDependencies(options =>
+    options.UseSqlServer(connectionString));
 
 var app = builder.Build();
 

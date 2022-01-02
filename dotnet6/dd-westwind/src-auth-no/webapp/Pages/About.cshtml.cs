@@ -4,6 +4,8 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
+
+// Additional Namespaces
 using Entities;
 using BLL;
 
@@ -11,16 +13,15 @@ namespace MyApp.Namespace
 {
     public class AboutModel : PageModel
     {
-        //a dependency on the WestWindServices class via "Constructor Dependency Injection"
-        private readonly DbServices Services;
-        public AboutModel(DbServices services) {
+        private readonly DbVersionServices Services;
+        public AboutModel(DbVersionServices services) {
            Services = services;
         }
 
-        public BuildVersion DatabaseVersion { get; set; }
+        public BuildVersion? DatabaseVersion { get; set; }
 
-        public string SuccessMessage {get; set;}
-        public string ErrorMessage {get; set;}
+        public string? SuccessMessage {get; set;}
+        public string? ErrorMessage {get; set;}
 
         public void OnGet()
         {

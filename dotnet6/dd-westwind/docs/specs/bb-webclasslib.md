@@ -84,7 +84,7 @@ namespace DAL {
 ```
 ### BLL Services
 
-In the "BLL" folder of our class library we will add the file `DbServices.cs` that will hold the class `DbServices`. This class must have a constructor that requires an instance of the `Context` class.
+In the "BLL" folder of our class library we will add the file `DbVersionServices.cs` that will hold the class `DbVersionServices`. This class must have a constructor that requires an instance of the `Context` class.
 
 In this class, we will create a public method called `GetDbVersion()` that has no parameters and returns an instance of the `DbVersion` entity. The related database table should only have one row, so you can return that first item from the database context.
 
@@ -98,10 +98,10 @@ using DAL;
 
 namespace BLL 
 {
-    public class DbServices 
+    public class DbVersionServices 
     {
         private readonly Context Context;
-        public DbServices(Context context) 
+        public DbVersionServices(Context context) 
         {
             if (context == null)
                 throw new ArgumentNullException();
@@ -120,7 +120,7 @@ namespace BLL
 We must configure the following services in our webapp.
 
 - `Context` class as a DbContext using SQL Server
-- `DbServices` class as a transient service
+- `DbVersionServices` class as a transient service
 
 #### DOTNET 5
 In the startup.cs file include the following:
@@ -141,7 +141,7 @@ public void ConfigureServices(IServiceCollection services)
             context.UseSqlServer(Configuration.GetConnectionString("WWDB")));
         
         //TrainWatchServices class as a transient service
-        services.AddTransient<DbServices>();
+        services.AddTransient<DbVersionServices>();
     }
 ```
 #### DOTNET 6
@@ -163,7 +163,7 @@ var connectionString = builder.Configuration.GetConnectionString("WWDB");
 builder.Services.AddDbContext<Context>(context => 
     context.UseSqlServer(connectionString));
 // TrainWatchServices class as a transient service
-builder.Services.AddTransient<DbServices>();
+builder.Services.AddTransient<DbVersionServices>();
 
 var app = builder.Build();
 ```
@@ -180,7 +180,7 @@ In addition, you will need to set up the database connection string in the `apps
 ```
 ### Create The `About` Page
 
-Create an `About.cshtml`/`About.cshtml.cs` Razor Page to display the database version information. The Page Model class must declare in its constructor a dependency on the `DbServices` class. 
+Create an `About.cshtml`/`About.cshtml.cs` Razor Page to display the database version information. The Page Model class must declare in its constructor a dependency on the `DbVersionServices` class. 
 
 On this page, display the database version information from the DbVersion table of the database.
 
@@ -191,3 +191,95 @@ dotnet new page -n About -o Pages
 ```
 
 We need to add a menu item so that this page can be navigated to using the main menu; we will use the text "About" for the link.
+
+We will add the following code to the `About.cshtml` file:
+
+```csharp
+@page
+@model MyApp.Namespace.AboutModel
+@{
+}
+<h5>About The Database Used for This Site</h5>
+
+@if(!string.IsNullOrEmpty(Model.ErrorMessage))
+{
+    <p style="color:red; font-weight: bold;">@Model.ErrorMessage</p>
+}
+
+@if(!string.IsNullOrEmpty(Model.SuccessMessage))
+{
+    <p style="color:green; font-weight: bold;">@Model.SuccessMessage</p>
+}
+
+<table class="table table-hover">
+    <tr>
+        <th>Database's Version</th>
+    </tr>
+    <tr>
+        <td>@Model.DatabaseVersion</td>
+    </tr>
+</table>
+```
+
+We will add the following code to the `About.html.cs` file:
+
+```csharp
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.RazorPages;
+
+// Additional Namespaces
+using Entities;
+using BLL;
+
+namespace MyApp.Namespace
+{
+    public class AboutModel : PageModel
+    {
+        private readonly DbVersionServices Services;
+        public AboutModel(DbVersionServices services) {
+           Services = services;
+        }
+
+        public BuildVersion? DatabaseVersion { get; set; }
+
+        public string? SuccessMessage {get; set;}
+        public string? ErrorMessage {get; set;}
+
+        public void OnGet()
+        {
+            try
+            {
+                Console.WriteLine($"AboutModel: OnGet");
+                DatabaseVersion = Services.GetDbVersion();
+                SuccessMessage = $"Database Retrieve Successful";
+            }
+            catch (Exception ex)
+            {
+                GetInnerException(ex);
+            }
+            
+        }
+
+        public void GetInnerException(Exception ex)
+        {
+            Exception rootCause = ex;
+            while (rootCause.InnerException != null)
+                rootCause = rootCause.InnerException;
+            ErrorMessage = rootCause.Message;
+        }
+    }
+}
+```
+
+To ensure that our web application works, build and run the webapp project.
+
+```csharp
+# From the src/ folder
+cd webapp
+dotnet build
+dotnet watch run
+```
