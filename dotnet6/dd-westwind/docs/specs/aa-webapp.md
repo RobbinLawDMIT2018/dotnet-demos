@@ -27,7 +27,7 @@ To ensure that your web application works, build and run your project.
 
 ```csharp
 # From the src/ folder
-cd TrainWatch.Web
+cd webapp
 dotnet build
 dotnet watch run
 ```
@@ -37,14 +37,14 @@ A browser window should open (https://localhost:5001). If you get a certificate 
 ```csharp
 dotnet dev-certs https --trust
 ```
-Alternately you could build and run from the *src/* folder. If you would like to test this out first make sure you are in the *src/* folder and then type `dotnet build "TrainWatch.sln"`. At this point, you could continue either with VS Code (type `dotnet watch run -p TrainWatch.Web\TrainWatch.csproj` from the *src/* folder) or use VS 2019 by double-clicking the "TrainWatch.sln" in windows file explorer.
+Alternately you could build and run from the *src/* folder. If you would like to test this out first make sure you are in the *src/* folder and then type `dotnet build "WestWind.sln"`. At this point, you could continue either with VS Code (type `dotnet watch run -p webapp\webapp.csproj` from the *src/* folder) or use VS 2019 by double-clicking the "WestWind.sln" in windows file explorer.
 
 ### Modify `Index.cshtml`
 
-Modify the home page to include the following.
+We will modify the home page to include the following.
 
-- The title of the site (**Train Watch**)
-- A simple logo for the site. Create an `images` folder in `wwwroot` and store the image there. Get an image from the web as a jpg or png.
+- The title of the site (**WestWind**)
+- A simple logo for the site. Create an `images` folder in `wwwroot` and store an image there. Get a random image from the web as a jpg or png.
 - One paragraph welcome and summary description of the site.
 
 ### Update the `_Layout.cshtml`
@@ -61,34 +61,18 @@ Create an `Contact.cshtml`/`Contact.cshtml.cs` Razor Page.
 
 ```csharp
 # From the src/ folder
-cd TrainWatch.Web
+cd webapp
 dotnet new page -n Contact -o Pages
 ```
 To ensure that your web application works, build and run your project.
 
 ```csharp
 # From the src/ folder
-cd TrainWatch.Web
+cd webapp
 dotnet build
 dotnet watch run
 ```
 
-In Contact.cshtml add a "Contact Us" page with a form (`method="POST"`) to allow people to send a message to us. The form must include the following (all fields are required).
+In Contact.cshtml add a "Contact" page with a form (`method="POST"`) to allow the user to send information to the server. The form will include many form elements that may be used in the future.
 
-- **Message Title** (use `<input type="text">`)
-- **User Email** (use `<input type="email">`)
-- **Subject** (use a `<select>` element with the options of "Contributing", "Request Membership", "Bug Report")
-- **Message Body** (use a `<textarea>` element)
-- **Active Member** (use a `<input type="checkbox">`)
-- **Submit** button (use a `<button type="submit">Submit</button>` element)
-
-In the Contact.cshtml.cs file add C# code in the methods OnGet(), and OnPost(), to process the form's input by echoing back all of the data entered by the user in a "SuccessMessage".
-
-To ensure that your web application works, build and run your project.
-
-```csharp
-# From the src/ folder
-cd TrainWatch.Web
-dotnet build
-dotnet watch run
-```
+In the Contact.cshtml.cs file we will add C# code in the methods OnGet(), and OnPost(), to process the form's input by echoing back all of the data entered by the user in a "SuccessMessage".
