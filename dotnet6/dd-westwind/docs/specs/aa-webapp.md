@@ -37,7 +37,7 @@ A browser window should open (https://localhost:5001). If you get a certificate 
 ```csharp
 dotnet dev-certs https --trust
 ```
-Alternately you could build and run from the *src/* folder. If you would like to test this out first make sure you are in the *src/* folder and then type `dotnet build "solution.sln"`. At this point, you could continue either with VS Code (type `dotnet watch run -p webapp\webapp.csproj` from the *src/* folder) or use VS 2019 by double-clicking the "solution.sln" in windows file explorer.
+Alternately you could build and run from the *src/* folder. If you would like to test this out first make sure you are in the *src/* folder and then type `dotnet build "solution.sln"`. At this point, you could continue either with VS Code (type `dotnet watch run -p webapp\webapp.csproj` from the *src/* folder) or use VS 2022 by double-clicking the "solution.sln" in windows file explorer.
 
 ### Modify `Index.cshtml`
 
@@ -73,6 +73,6 @@ dotnet build
 dotnet watch run
 ```
 
-In Contact.cshtml we will add a "Contact" page with a form (`method="POST"`) to allow the user to send information to the server. The form will include many form elements that may be used in future webapps.
+In Contact.cshtml we will add a "Contact" page with a form (`method="POST"`) to allow the user to send information to the server. The form will include many form elements that may be used in future web apps.
 
 In the Contact.cshtml.cs file we will add C# code in the methods OnGet(), and OnPost(), to process the form's input by echoing back all of the data entered by the user in a "SuccessMessage".
