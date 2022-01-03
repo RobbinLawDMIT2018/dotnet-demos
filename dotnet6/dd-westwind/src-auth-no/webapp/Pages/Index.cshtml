@@ -1,10 +1,23 @@
 ﻿@page
 @model IndexModel
 @{
-    ViewData["Title"] = "Home page";
+    ViewData["Title"] = "West Wind Trading";
 }
 
 <div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+    <img src="/images/WestWind.png" alt="WestWind" style="float:right;"  width="400" height="400"/>
+    <h5>@ViewData["Title"]</h5>
+</div>
+<div class="offset-1">
+    <p>West Wind is a site that supports a database about different Product Lines.
+    </p>
+
+    <p>
+        The database will include information about:
+        <ul>
+            <li>Suppliers</li>
+            <li>Categories</li>
+            <li>Products</li>
+        </ul>
+    </p>
 </div>

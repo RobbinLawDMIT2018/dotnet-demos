@@ -8,7 +8,7 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 // Additional Namespaces
 using Entities;
 using BLL;
-
+#nullable disable
 namespace MyApp.Namespace
 {
     public class AboutModel : PageModel
@@ -18,10 +18,10 @@ namespace MyApp.Namespace
            Services = services;
         }
 
-        public BuildVersion? DatabaseVersion { get; set; }
+        public BuildVersion DatabaseVersion { get; set; }
 
-        public string? SuccessMessage {get; set;}
-        public string? ErrorMessage {get; set;}
+        public string SuccessMessage {get; set;}
+        public string ErrorMessage {get; set;}
 
         public void OnGet()
         {
