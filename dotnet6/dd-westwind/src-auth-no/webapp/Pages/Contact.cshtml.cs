@@ -6,7 +6,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
-
+//https://docs.microsoft.com/en-us/dotnet/csharp/nullable-references
 #nullable disable
 namespace MyApp.Namespace
 {
@@ -55,19 +55,10 @@ namespace MyApp.Namespace
         public string ErrorMessage {get; set;}
         public List<Exception> errors {get; set;} = new();
 
-        public IActionResult OnGet()
+        public void OnGet()
         {
-            try
-            {
                 Console.WriteLine($"ContactModel: OnGet");
                 PopulateSelectLists();
-            }
-            catch (Exception e)
-            {
-                GetInnerException(e);
-            }
-            // Return the page but preserve any user inputs
-            return Page();
         }
 
         public IActionResult OnPost(string text1, string number1)
