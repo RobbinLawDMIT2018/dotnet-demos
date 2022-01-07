@@ -17,7 +17,7 @@
 
 //get all Artists
 Artists
-.Select (x => x)
+.Select (x => x.Name)
 
 //ordering
 Artists
@@ -51,9 +51,18 @@ Albums
 .ThenBy (x => x.Title)
 .Select (x => x)
 
+Albums
+.Where (x => x.ReleaseYear >= 1990)
+.Where (x => x.ReleaseYear <= 1999)
+.OrderByDescending (x => x.ReleaseYear)
+.ThenByDescending (x => x.Title)
+.Select (x => x)
 
 //list all customers in alphabetic order by last name
-//who live in the USA.
+//who live in California (CA) in the USA.
+Customers
+.Select (x => x)
+
 Customers
 .OrderBy (x => x.LastName)
 .Where (x => (x.Country.Equals ("USA") && x.State.Equals ("CA")))
