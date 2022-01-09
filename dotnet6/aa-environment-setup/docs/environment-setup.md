@@ -26,10 +26,5 @@
 - One Dark Pro - Color Theme
 - Bracket Pair Colorizer
 - Prettier Code Formatter 
-- htmltagwrap (Alt + w) - to markup content that is already in place.
-    - multiple cursors
-- Auto Rename Tag - to rename an HTML tag faster.
-- Live Server - opens in the default browser
-- Live Preview (Microsoft) - opens in a tab in VSCode
 
 ----
