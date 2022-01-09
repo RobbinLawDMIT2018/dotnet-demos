@@ -22,7 +22,7 @@ There is a lot of documentation on Microsoft's site for [**Querying data**](http
 
 ----
 
-<!-- ## References
+## References
 
 The following links are selected pages from the older notes for DMIT-2018.
 
@@ -32,4 +32,4 @@ The following links are selected pages from the older notes for DMIT-2018.
 - [C# Expressions in LinqPad](https://dmit-2018.github.io/demos/Northwind/linq/LinqPad/expressions.html)
 - [C# Statements in LinqPad](https://dmit-2018.github.io/demos/Northwind/linq/LinqPad/statements.html)
 - [C# Program in LinqPad](https://dmit-2018.github.io/demos/Northwind/linq/LinqPad/program.html)
-- [LINQ - More Method Syntax](https://dmit-2018.github.io/demos/eRestaurant/linq/extensions.html#exploring-the-erestaurant-database) -->
+- [LINQ - More Method Syntax](https://dmit-2018.github.io/demos/eRestaurant/linq/extensions.html#exploring-the-erestaurant-database)
