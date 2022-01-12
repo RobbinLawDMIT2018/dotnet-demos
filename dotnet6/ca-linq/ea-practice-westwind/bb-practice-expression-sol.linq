@@ -14,11 +14,6 @@
   </Connection>
 </Query>
 
-//A) List all the customer company names for those with more than 5 orders.
-Customers
-.Where (company => (company.Orders.Count > 5))
-.Select (company => company.CompanyName)
-
 //B) Get a list of all the region names
 Regions
 .Select(place => place.RegionDescription)
@@ -26,14 +21,6 @@ Regions
 //C) Get a list of all the territory names
 Territories
 .Select(area => area.TerritoryDescription)
-
-//D) List all the regions and the number of territories in each region
-Regions
-.Select (place => new 
-{
-Region = place.RegionDescription,
-NumberOfTerritories = place.Territories.Count
-})
 
 //E) List all the region and territory names order by region then territory
 Territories
@@ -43,6 +30,19 @@ Territories
 {
 Region = place.Region.RegionDescription,
 Territory = place.TerritoryDescription
+})
+
+//A) List all the customer company names for those with more than 5 orders.
+Customers
+.Where (company => (company.Orders.Count > 5))
+.Select (company => company.CompanyName)
+
+//D) List all the regions and the number of territories in each region
+Regions
+.Select (place => new 
+{
+Region = place.RegionDescription,
+NumberOfTerritories = place.Territories.Count
 })
 
 //F) List all the region and territory names

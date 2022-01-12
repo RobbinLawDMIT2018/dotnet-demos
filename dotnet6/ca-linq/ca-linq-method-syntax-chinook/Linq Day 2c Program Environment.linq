@@ -28,12 +28,12 @@ void Main()
 	//In the program environment you CAN define classes and methods.
 	
 	//execute a method
-	var results = BLLQuery("Aerosmith");
+	var results = BLLQuery("Queen", 1977);
 	results.Dump();
 }
 
 //Define other methods, classes and namespaces here
-//This class would be from the ViewModel.
+//This class would be from the ViewModel and/or the Entity.
 public class SongItem
 {
 	public string Song{get;set;}
@@ -46,12 +46,13 @@ public class SongItem
 }
 
 //Create a method to simulate the BLL method in a controller.
-public List<SongItem> BLLQuery(string artistname)
+public List<SongItem> BLLQuery(string artistname, int year)
 {
 	//change the Anonymous datatype to a strongly-typed datatype
 	var results = 
 	Tracks
-	.Where (x => x.Album.Artist.Name.Equals (artistname))
+	.Where (x => x.Album.Artist.Name.Equals(artistname))
+	.Where (x => x.Album.ReleaseYear.Equals(year))
 	.OrderBy (x => x.Name)
 	.Select (x => new SongItem
 	     {

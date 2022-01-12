@@ -24,20 +24,20 @@
 //List all customers in alphabetic order by last name,
 //firstname who live in the USA with a yahoo email.
 //Show only, the customer id, lastname, firstname (as one), and
-//the city and state in which they reside.				
+//the city and state and country in which they reside, and email.				
 var q1 =
 Customers
-.Where (x => (x.Country.Equals ("USA") && x.Email.Contains ("yahoo")))
+.Where (x => (x.Country.Equals("USA") && x.Email.Contains("yahoo")))
 .OrderBy (x => x.LastName)
 .ThenBy (x => x.FirstName)
-.Select (x => new  
+.Select (x => new
 	{
 	ID = x.CustomerId, 
-	Name = ((x.LastName + ", ") + x.FirstName), 
+	Name = (x.LastName + ", " + x.FirstName), 
 	City = x.City, 
 	State = x.State, 
 	Country = x.Country, 
-	Email = x.Email
+	Emails = x.Email
 	}
 );
 	
@@ -55,7 +55,7 @@ Customers
 //there is no Label display "UnKnown".
 var q2 =
 Albums
-.Where (x => (x.ReleaseYear == 1992))
+.Where (x => (x.ReleaseYear == 1990))
 .OrderBy (x => x.Title)
 .Select (x => new  
      {
