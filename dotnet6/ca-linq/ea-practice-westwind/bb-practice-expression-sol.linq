@@ -22,6 +22,27 @@ Regions
 Territories
 .Select(area => area.TerritoryDescription)
 
+//G) List all the product names that contain the word "chef" in the name.
+Products                                              
+.Where(item => item.ProductName.Contains("chef")) 
+.Select(item => item.ProductName)
+
+//I) List the company names of all Suppliers in North America(Canada, USA, Mexico)
+Suppliers
+.Where 	(company => ((company.Address.Country == "Canada") || 
+		(company.Address.Country == "USA") || 
+		(company.Address.Country == "Mexico")))
+.Select (company => company.CompanyName)
+
+//H) List all the discontinued products, specifying the product name and unit price.
+Products
+.Where (item => item.Discontinued)
+.Select (item => new 
+{
+ProductName = item.ProductName,
+UnitPrice = item.UnitPrice
+})
+
 //E) List all the region and territory names order by region then territory
 Territories
 .OrderBy (place => place.Region.RegionDescription)
@@ -54,27 +75,5 @@ Region = area.RegionDescription,
 Territories = 	area.Territories
 				.Select (place => place.TerritoryDescription)
 })
-
-//G) List all the product names that contain the word "chef" in the name.
-Products                                              
-.Where(item => item.ProductName.Contains("chef")) 
-.Select(item => item.ProductName)
-
-//H) List all the discontinued products, specifying the product name and unit price.
-Products
-.Where (item => item.Discontinued)
-.Select (item => new 
-{
-ProductName = item.ProductName,
-UnitPrice = item.UnitPrice
-})
-
-//I) List the company names of all Suppliers in North America(Canada, USA, Mexico)
-Suppliers
-.Where 	(company => ((company.Address.Country == "Canada") || 
-		(company.Address.Country == "USA") || 
-		(company.Address.Country == "Mexico")))
-.Select (company => company.CompanyName)
-
 
 
