@@ -16,7 +16,7 @@
 //aggregrates work ONLY on a collection of data NOT on a single row
 //a collection CAN have 0, 1 or more rows
 Albums
-.Where (x => (x.Tracks.Count() > 25))
+.Where (x => (x.Tracks.Count() > 20))
 .Select (x => new 
 {
 AlbumTitle = x.Title,
@@ -30,11 +30,15 @@ NumOfTracks = x.Tracks.Count
 //List all Albums showing, the Title, Artist Name and number of tracks
 //on that album
 
-//x (is the current Album instance/record).Tracks(navigational property).aggregrate
-//because Tracks is a collection of the Album instance (ICollection<T>)
-//    we can used the aggregrate on the expression
+//x (is the current Album instance/record/row).Tracks(navigational property).aggregrate
+//because Tracks is a collection of the Album instance (ICollection<T>) or (IEnumerable<T>)
+//we can use the aggregrate on the expression
 //HOWEVER
 //we can NOT go x.Artist.aggregrate BECAUSE Artist is NOT a collection
+Albums
+.Where (x => (x.Tracks.Count == 0))
+.Select(x => x)
+
 Albums
 .Where (x => (x.Tracks.Count > 0))
 .OrderBy (x => x.Tracks.Count)

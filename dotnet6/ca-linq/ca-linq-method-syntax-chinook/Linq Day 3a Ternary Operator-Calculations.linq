@@ -9,7 +9,7 @@
   </Connection>
 </Query>
 
-//create an alphabetic list of Albums by decades
+//create an ordered (title) list of Albums by decades
 //70s, 80s, 90s, modern. Show the Album title and the decade
 //it was produced.
 Albums
@@ -34,10 +34,10 @@ Tracks
 .Select (x => new 
 {
 Name = x.Name,
-PlayTime = 	(x.Milliseconds).ToString() + "raw " +
-				(x.Milliseconds / 60000).ToString() + "min " +
-				(x.Milliseconds % 60000).ToString() + "remainder " +
-				(x.Milliseconds % 60000 / 1000).ToString() + "sec",
+PlayTime = 	(x.Milliseconds) + "raw " +
+			(x.Milliseconds / 60000) + "min " +
+			(x.Milliseconds % 60000) + "remainder " +
+			(x.Milliseconds % 60000 / 1000) + "sec",
 Storage = x.Bytes / 1024 + 1
 })
 	
