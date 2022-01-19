@@ -15,7 +15,7 @@
 //list all "sales support" employees showing their fullname (lastname, firstname),
 //their title and the number of customers each support. Order by fullname.
 //In addition show a list of the customers for each employee. Show the customer
-//fullname, city and state
+//fullname, city and state, order by fullname.
 
 Employees
 .Select (x => x)
@@ -40,7 +40,7 @@ clientlist1 = 	x.SupportRepCustomers
 				state = y.State
 				}),
 clientlist2 = 	Customers
-				.Where (y => (y.SupportRepId == (Int32?)(x.EmployeeId)))
+				.Where (y => (y.SupportRepId == (x.EmployeeId)))
 				.OrderBy (y => y.LastName)
 				.ThenBy (y => y.FirstName)
 				.Select (y => new 
@@ -75,7 +75,7 @@ songs = x.Tracks
 
 //Create a Playlist report that shows the Playlist name, the number
 //of songs on the playlist the user name belonging to the playlist
-//and the songs on the playlist with their Genre
+//and the songs on the playlist with their Genre, for playlists that have at least 20 tracks.
 
 Playlists
 .Where (x => (x.PlaylistTracks.Count () >= 20))
