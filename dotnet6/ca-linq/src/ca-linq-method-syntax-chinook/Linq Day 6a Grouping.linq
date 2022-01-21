@@ -132,8 +132,8 @@ Albums
 
 //results2a.Dump();
 
-//Does not work with Chinook trackcount is always the album count.
-//but does work with ChinookEntity
+//Does not work with Chinook (trackcount is always the album count).
+//but does work with ChinookEntity.
 var results2b =
 Albums
 .Where (x => ((x.ReleaseYear > 1989) && (x.ReleaseYear < 2000)))
@@ -160,7 +160,8 @@ albumdata = gYear
 //Count tracks for the Name.
 
 
-//This does not work with ChinookEntity.
+//This does not work with ChinookEntity it crashes.
+//but it does work with Chinook.
 var results3a = 
 Tracks
 //.AsEnumerable()

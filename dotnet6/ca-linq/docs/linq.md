@@ -18,7 +18,7 @@
 
 There is a lot of documentation on Microsoft's site for [**Querying data**](https://docs.microsoft.com/en-us/ef/core/querying/) from EF Core. The articles under this heading are recommended readings, especially "Overview", "Client vs. server evaluation", "Query tags", and "How queries work".
 
-![Querying Data](./images/EFCoreQueryData.png)
+![Querying Data](./img/EFCoreQueryData.png)
 
 ----
 
@@ -33,3 +33,5 @@ The following links are selected pages from the older notes for DMIT-2018.
 - [C# Statements in LinqPad](https://dmit-2018.github.io/demos/Northwind/linq/LinqPad/statements.html)
 - [C# Program in LinqPad](https://dmit-2018.github.io/demos/Northwind/linq/LinqPad/program.html)
 - [LINQ - More Method Syntax](https://dmit-2018.github.io/demos/eRestaurant/linq/extensions.html#exploring-the-erestaurant-database)
+
+----
