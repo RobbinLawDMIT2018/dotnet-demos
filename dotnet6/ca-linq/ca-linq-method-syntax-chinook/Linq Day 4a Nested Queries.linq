@@ -1,4 +1,4 @@
-<Query Kind="Expression">
+<Query Kind="Statements">
   <Connection>
     <ID>dd2dff55-ce65-4a8d-9b4d-17114eda0e3f</ID>
     <NamingServiceVersion>2</NamingServiceVersion>
@@ -17,9 +17,13 @@
 //In addition show a list of the customers for each employee. Show the customer
 //fullname, city and state, order by fullname.
 
+var q1 =
 Employees
-.Select (x => x)
+.Select (x => x);
 
+q1.Dump();
+
+var q2 =
 Employees
 .Where (x => (x.Title.Contains ("Support") && x.Title.Contains ("Sales")))
 .OrderBy (x => x.LastName)
@@ -49,7 +53,9 @@ clientlist2 = 	Customers
 				city = y.City,
 				state = y.State
 				})
-})
+});
+
+q2.Dump();
 
 
 //Create a list of albums showing their title and artist.
@@ -57,6 +63,8 @@ clientlist2 = 	Customers
 //Show the songs on the album (name and length)
 
 //in the inner query create an IEnumberable collection
+
+var q3 =
 Albums
 .Where (x => (x.Tracks.Count () >= 25))
 .Select (x => new 
@@ -70,17 +78,24 @@ songs = x.Tracks
 		name = y.Name,
 		length = y.Milliseconds
 		})
-})
+});
+
+q3.Dump();
 
 
 //Create a Playlist report that shows the Playlist name, the number
 //of songs on the playlist the user name belonging to the playlist
 //and the songs on the playlist with their Genre, for playlists that have at least 20 tracks.
 
+var q4 = 
 Playlists
 .Where (x => (x.PlaylistTracks.Count () >= 20))
-.Select (x => x)
+.Select (x => x);
 
+q4.Dump();
+
+
+var q5 = 
 Playlists
 .Where (x => (x.PlaylistTracks.Count() >= 20))
 .Select (x => new 
@@ -94,5 +109,7 @@ songs = x.PlaylistTracks
 		track = y.Track.Name,
 		genre = y.Track.Genre.Name
 		})
-})
+});
+
+q5.Dump();
 
