@@ -55,11 +55,12 @@
 //most albums, then by the year within count.
 
 //STEP 1: is to get a feel for the data in the table.
+	
+var results1a =
+Albums
+.OrderBy (x => x.Title)
+.Select (x => x);
 
-var results1a = 	from x in Albums
-					orderby x.Title
-					select x;
-				
 //results1a.Dump();
 
 
@@ -77,14 +78,6 @@ Albums
 //results1b.Dump();
 
 //STEP 3: Create the reporting row for the group.
-
-//var results1c = 	from x in Albums
-//					group x by x.ReleaseYear into gYear
-//					select new
-//					{
-//						year = gYear.Key,
-//						albumcount = gYear.Count()
-//					};
 					
 var results1c =
 Albums
@@ -98,15 +91,6 @@ albumcount = gYear.Count ()
 //results1c.Dump();
 
 //STEP 4: Complete any additional report customization like ordering.
-
-//var results1d = 	from x in Albums
-//					group x by x.ReleaseYear into gYear
-//					orderby gYear.Count() descending, gYear.Key
-//					select new
-//					{
-//						year = gYear.Key,
-//						albumcount = gYear.Count()
-//					};
 	
 var results1d =
 Albums
@@ -133,31 +117,16 @@ albumcount = gYear.Count ()
 // a) on the original pile of data, OR
 // b) on the grouped piles of data
 
-//var results2 = 	from x in Albums
-//				where x.ReleaseYear > 1989 && x.ReleaseYear < 2000
-//				group x by x.ReleaseYear into gYear
-//				//where gYear.Key > 1989 && gYear.Key < 2000
-//				orderby gYear.Count() descending, gYear.Key
-//				select new
-//				{
-//					year = gYear.Key,
-//					albumcount = gYear.Count(),
-//					albumdata = from y in gYear
-//								select new
-//								{
-//									albumtitle = y.Title,
-//									artist = y.Artist.Name,
-//									//have a third nested query.
-//									trackcount1 = 	(from z in y.Tracks
-//													where z.AlbumId == y.AlbumId
-//													select z.AlbumId).Count(),
-//									//this is equivelent to above, but with a delegate.
-//									trackcount2 = y.Tracks.Count(z => z.AlbumId == y.AlbumId),
-//									//this will NOT work as expected.
-//									trackcount3 = y.Tracks.Count(), 
-//								}
-//				};
-				
+var results2a =
+Albums
+.Where (x => ((x.ReleaseYear > 1989) && (x.ReleaseYear < 2000)))
+.GroupBy (x => x.ReleaseYear)
+.OrderByDescending (gYear => gYear.Count ())
+.ThenBy (gYear => gYear.Key)
+.Select (gYear => gYear);
+
+results2a.Dump();
+			
 var results2 =
 Albums
 .Where (x => ((x.ReleaseYear > 1989) && (x.ReleaseYear < 2000)))
