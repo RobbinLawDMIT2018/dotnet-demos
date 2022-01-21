@@ -1,11 +1,16 @@
 <Query Kind="Statements">
   <Connection>
-    <ID>dd2dff55-ce65-4a8d-9b4d-17114eda0e3f</ID>
+    <ID>c35fe573-e6f1-4520-a46f-f69153e5ca99</ID>
     <NamingServiceVersion>2</NamingServiceVersion>
     <Persist>true</Persist>
+    <Driver Assembly="(internal)" PublicKeyToken="no-strong-name">LINQPad.Drivers.EFCore.DynamicDriver</Driver>
     <Server>.</Server>
-    <DeferDatabasePopulation>true</DeferDatabasePopulation>
     <Database>Chinook</Database>
+    <DisplayName>ChinookEntity</DisplayName>
+    <DriverData>
+      <PreserveNumeric1>True</PreserveNumeric1>
+      <EFProvider>Microsoft.EntityFrameworkCore.SqlServer</EFProvider>
+    </DriverData>
   </Connection>
 </Query>
 
@@ -125,42 +130,41 @@ Albums
 .ThenBy (gYear => gYear.Key)
 .Select (gYear => gYear);
 
-results2a.Dump();
-			
-var results2 =
+//results2a.Dump();
+
+//Does not work with Chinook trackcount is always the album count.
+//but does work with ChinookEntity
+var results2b =
 Albums
 .Where (x => ((x.ReleaseYear > 1989) && (x.ReleaseYear < 2000)))
 .GroupBy (x => x.ReleaseYear)
-.OrderByDescending (gYear => gYear.Count ())
+.OrderByDescending (gYear => gYear.Count())
 .ThenBy (gYear => gYear.Key)
 .Select (gYear => new 
 {
 year = gYear.Key,
-albumcount = gYear.Count (),
+albumcount = gYear.Count(),
 albumdata = gYear
 			.Select (y => new 
 			{
 			albumtitle = y.Title,
 			artist = y.Artist.Name,
-			trackcount1 = y.Tracks.Where (z => (z.AlbumId == (Int32?)(y.AlbumId))).Select (z => z.AlbumId).Count (),
-			trackcount2 = y.Tracks.Count (z => (z.AlbumId == (Int32?)(y.AlbumId))),
-			trackcount3 = y.Tracks.Count ()
+			trackcount3 = y.Tracks.Count()
 			})
 });
 
-//results2.Dump();
+//results2b.Dump();
 
 //EXAMPLE 3:
-//list the number of tracks produced after 2010 by Genre name. 
+//list the number of tracks by Genre name. 
 //Count tracks for the Name.
 
-//var results3a = 	from trk in Tracks
-//					group trk by trk.Genre.Name into gTemp
-//					orderby gTemp.Key
-//					select gTemp;
 
+//This does not work with ChinookEntity.
 var results3a = 
 Tracks
+//.AsEnumerable()
+//.GroupBy(track => track.GenreId)
 .GroupBy (trk => trk.Genre.Name)
 .OrderBy (gTemp => gTemp.Key)
 .Select (gYear => gYear);
@@ -174,11 +178,6 @@ Tracks
 //To reference a particular attribute of the key entity value
 //use normal object referencing (dot operator).
 
-//var results3b = 	from trk in Tracks
-//					group trk by trk.Genre into gTemp
-//					orderby gTemp.Key.Name
-//					select gTemp;
-
 
 var results3b =
 Tracks
@@ -187,16 +186,6 @@ Tracks
 .Select (gYear => gYear);
 
 //results3b.Dump();
-
-//var results3c = 	from trk in Tracks
-//					//where trk.Album.ReleaseYear > 2010
-//					group trk by trk.Genre into gTemp
-//					orderby gTemp.Key.Name
-//					select new
-//					{
-//						genre = gTemp.Key.Name,
-//						numberof = gTemp.Count()
-//					};
 
 
 var results3c =
