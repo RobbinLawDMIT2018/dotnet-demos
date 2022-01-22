@@ -1,16 +1,11 @@
 <Query Kind="Statements">
   <Connection>
-    <ID>c35fe573-e6f1-4520-a46f-f69153e5ca99</ID>
+    <ID>dd2dff55-ce65-4a8d-9b4d-17114eda0e3f</ID>
     <NamingServiceVersion>2</NamingServiceVersion>
     <Persist>true</Persist>
-    <Driver Assembly="(internal)" PublicKeyToken="no-strong-name">LINQPad.Drivers.EFCore.DynamicDriver</Driver>
     <Server>.</Server>
+    <DeferDatabasePopulation>true</DeferDatabasePopulation>
     <Database>Chinook</Database>
-    <DisplayName>ChinookEntity</DisplayName>
-    <DriverData>
-      <PreserveNumeric1>True</PreserveNumeric1>
-      <EFProvider>Microsoft.EntityFrameworkCore.SqlServer</EFProvider>
-    </DriverData>
   </Connection>
 </Query>
 
@@ -149,7 +144,9 @@ albumdata = gYear
 			{
 			albumtitle = y.Title,
 			artist = y.Artist.Name,
-			trackcount3 = y.Tracks.Count()
+			trackcount1 = y.Tracks.Count(z => (z.AlbumId == y.AlbumId)),
+			//This will not work!
+			trackcount2 = y.Tracks.Count()
 			})
 });
 
@@ -170,7 +167,7 @@ Tracks
 .OrderBy (gTemp => gTemp.Key)
 .Select (gYear => gYear);
 
-//results3a.Dump();
+results3a.Dump();
 
 //same report but using the entity as the group criteria
 
