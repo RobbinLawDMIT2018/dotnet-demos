@@ -21,7 +21,7 @@ var q1 =
 Employees
 .Select (x => x);
 
-q1.Dump();
+//q1.Dump();
 
 var q2 =
 Employees
@@ -80,7 +80,7 @@ songs = x.Tracks
 		})
 });
 
-q3.Dump();
+//q3.Dump();
 
 
 //Create a Playlist report that shows the Playlist name, the number
@@ -92,7 +92,7 @@ Playlists
 .Where (x => (x.PlaylistTracks.Count () >= 20))
 .Select (x => x);
 
-q4.Dump();
+//q4.Dump();
 
 
 var q5 = 
@@ -111,5 +111,5 @@ songs = x.PlaylistTracks
 		})
 });
 
-q5.Dump();
+//q5.Dump();
 

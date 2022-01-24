@@ -69,4 +69,4 @@ PlaylistTracks
 }).Distinct()
 .OrderBy(x => x.song);
 
-//q2c.Dump();
+q2c.Dump();
