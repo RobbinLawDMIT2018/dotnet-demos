@@ -10,7 +10,7 @@
 </Query>
 
 //Aggregrates
-//.Count() method or .Count property, same result, does not need a delegate expression
+//.Count() method or .Count property, same result, usually does not need a delegate expression
 //.Sum(), .Max(), .Min(), .Average(), require a delegate expression so all are methods
 
 //aggregrates work ONLY on a collection of data NOT on a single row
