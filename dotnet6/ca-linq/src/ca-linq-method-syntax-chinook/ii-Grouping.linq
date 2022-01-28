@@ -125,7 +125,7 @@ Albums
 .ThenBy (gYear => gYear.Key)
 .Select (gYear => gYear);
 
-//results2a.Dump();
+results2a.Dump();
 
 //Does not work with Chinook (trackcount is always the album count).
 //but does work with ChinookEntity.
