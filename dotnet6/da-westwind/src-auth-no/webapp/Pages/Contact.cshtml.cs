@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 //https://docs.microsoft.com/en-us/dotnet/csharp/nullable-references
-#nullable disable
+//#nullable disable
 namespace MyApp.Namespace
 {
     public class ContactModel : PageModel
@@ -74,7 +74,7 @@ namespace MyApp.Namespace
                 {
                     Console.WriteLine($"checkbox= {CheckBox}");
                     Console.WriteLine($"radio= {Radio}");
-                    // Business Logic Validation
+                    // Client Side Validation
                     if (string.IsNullOrEmpty(Text1))
                         errors.Add(new Exception("Text1"));
                     if (SelectedSubjectId == 0)
@@ -102,7 +102,6 @@ namespace MyApp.Namespace
             {
                 GetInnerException(e);
             }
-            // Return the page but preserve any user inputs
             return Page();
         }
 

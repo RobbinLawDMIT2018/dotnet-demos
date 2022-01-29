@@ -16,15 +16,25 @@ namespace MyApp.Namespace
         {
             Services = services;
         }
+
+        [BindProperty]
         public string ButtonPressed {get; set;}
+        [BindProperty]
         public string SuccessMessage { get; set; }
+        [BindProperty]
         public string ErrorMessage { get; set; }
-
+        [BindProperty]
         public string PartialProductName {get;set;}
+        [BindProperty]
         public int? SelectedCategoryId {get;set;}
-
+        [BindProperty]
         public List<Product> SearchedProducts { get; set; }
+        [BindProperty]
+        public Product Product {get;set;} = new();
+        [BindProperty]
         public List<Category> SelectListOfCatagories {get;set;}
+        [BindProperty]
+        public List<Supplier> SelectListOfSuppliers {get;set;}
         
         public IActionResult OnGet()
         {
@@ -40,16 +50,11 @@ namespace MyApp.Namespace
             return Page();
         }
 
-        public IActionResult OnPost(string buttonPressed, string partialProductName, string selectedCategoryId, string successMessage)
+        public IActionResult OnPost()
         {
             try
             {
                 Console.WriteLine("QueryModel: OnPost");
-                ButtonPressed = buttonPressed;
-                PartialProductName = partialProductName;
-                if(!string.IsNullOrEmpty(selectedCategoryId))
-                    SelectedCategoryId = int.Parse(selectedCategoryId);
-                SuccessMessage = successMessage;
                 if(ButtonPressed == "SearchByPartialProductName")
                 {
                     SearchedProducts = Services.FindProductsByPartialProductName(PartialProductName);
@@ -59,15 +64,12 @@ namespace MyApp.Namespace
                     SearchedProducts = Services.FindProductsByCategory(SelectedCategoryId);
                 }
                 PopulateSelectList();
-                // Return the page but preserve any user inputs
-                return Page();
             }
             catch (Exception ex)
             {
                 GetInnerException(ex);
-                // Return the page but preserve any user inputs
-                return Page();
             }
+            return Page();
             
         }
 
@@ -86,9 +88,7 @@ namespace MyApp.Namespace
 
         public void GetInnerException(Exception ex)
         {
-            // Start with the assumption that the given exception is the root of the problem
             Exception rootCause = ex;
-            // Loop to "drill-down" to what the original cause of the problem is
             while (rootCause.InnerException != null)
                 rootCause = rootCause.InnerException;
             ErrorMessage = rootCause.Message;
