@@ -1,0 +1,252 @@
+﻿@page
+@model MyApp.Namespace.QueryCrudModel
+@{
+}
+
+@* <div class="topbox">
+    <p style="font-weight:bold; color:forestgreen">@Model.FeedBackMessage</p>
+    <p style="font-weight:bold; color:firebrick">@Model.ErrorMessage</p>
+</div> *@
+
+<section class="setflex">
+<div class="halfpage">
+
+<h5>Query Page</h5>
+
+@if(!string.IsNullOrEmpty(Model.ErrorMessage))
+{
+  <p style="color:red; font-weight: bold;">@Model.ErrorMessage</p>
+}
+
+@if(!string.IsNullOrEmpty(Model.SuccessMessage))
+{
+  <p style="color:green; font-weight: bold;">@Model.SuccessMessage</p>
+}
+
+<form method="post">
+    <div class="row mb-3">
+        <label for="PartialProductName" class="col-sm-1 col-form-label">Product</label>
+        <div class="col-sm-2">
+            <input type="search" class="form-control" placeholder="Partial Name" 
+                id="PartialProductName" 
+                name="partialProductName" value="@Model.PartialProductName">
+        </div>
+        <div class="col-sm-1">
+            <button type="submit" class="btn btn-primary" formaction="/QueryCrud" 
+                name="buttonPressed" value="SearchByPartialProductName">Search</button>
+        </div>
+        <div class="col-sm-1"></div>
+        <label for="SelectedCategoryId" class="col-sm-1 col-form-label">Category</label>
+        <div class="col-sm-2">
+            <select class="form-control" id="SelectedCategoryId" name="selectedCategoryId">
+                <option value="0">select ...</option>
+                @foreach (var item in Model.SelectListOfCatagories)
+                {
+                        if (Model.SelectedCategoryId == item.CategoryId)
+                        {
+                            <option value="@item.CategoryId" selected>@item.CategoryName</option>
+                        }
+                        else
+                        {
+                            <option value="@item.CategoryId">@item.CategoryName</option>
+                        }
+                }
+            </select>
+        </div>
+        <div class="col-sm-1">
+            <button type="submit" class="btn btn-primary" formaction="/QueryCrud" 
+                name="buttonPressed" value="SearchByCategory">Search</button>
+        </div>
+        <div class="col-sm-1"></div>
+        <div class="col-sm-2">
+            <button type="submit" class="btn btn-primary" formaction="/QueryCrud" 
+                name="buttonPressed" value="AddNewProduct">New Product</button>
+        </div>  
+    </div>
+</form>
+
+@if(Model.SearchedProducts != null)
+{
+  <div id="table_box_bootstrap">
+  <table class="table table-hover">
+  <thead>
+    <tr>
+      <th>Action</th>
+      <th>ProductName</th>
+      <th>Category</th>
+      <th>QuantityPerUnit</th>
+      <th>UnitPrice</th>
+      <th>Discontinued</th>       
+    </tr>
+  </thead>
+  @if(Model.SearchedProducts.Count == 0)
+  {
+    <tr><td colspan="6"><i>There are no Products available.</i></td></tr>
+  }
+  @foreach(var item in Model.SearchedProducts)
+  {
+    <tr>
+      <td><button type="submit" class="btn btn-primary" 
+          name="productId" formaction="/QueryCrud" value="@item.ProductId">Edit</button></td>
+      <td>@item.ProductName</td>
+      <td>
+        <select disabled>
+          <option value="0">select ...</option>
+          @foreach (var element in Model.SelectListOfCatagories)
+          {
+            if (item.CategoryId == element.CategoryId)
+            {
+              <option value="@element.CategoryId" selected>@element.CategoryName</option>
+            }
+            else
+            {
+              <option value="@element.CategoryId">@element.CategoryName</option>
+            }
+          }
+        </select>  
+      </td>
+      <td>@item.QuantityPerUnit</td>
+      <td>@item.UnitPrice</td>
+      <td><input type="checkbox" disabled checked="@item.Discontinued"></input></td>
+    </tr>
+  }
+  </table>
+  </div>
+}
+</div>
+
+<div class="halfpage">
+<form method="post">
+@* @if(Model.Product.ProductId == 0 )
+{
+  <div class="row mb-3">
+    <div class="col-sm-1">
+      <button type="submit" class="btn btn-primary" formaction="/QueryCrud" 
+          name="buttonPressed" value="Add">&nbsp;Add&nbsp;&nbsp;&nbsp;</button>
+    </div>
+    <div class="col-sm-1">
+      <button type="submit" class="btn btn-primary" disabled>Update</button>
+    </div>
+    <div class="col-sm-1">
+      <button type="submit" class="btn btn-primary" disabled>Delete</button>
+    </div>
+    <div class="col-sm-2">
+      <button type="submit" class="btn btn-primary" 
+          formaction="/QueryCrud" title="Back to Query Page" name="buttonPressed" value="CrudBackToQuery">Query Page</button>
+    </div>
+  </div>
+}
+else
+{
+    <div class="row mb-3">
+        <div class="col-sm-1">
+            <button type="submit" class="btn btn-primary" disabled>&nbsp;Add&nbsp;&nbsp;&nbsp;</button>
+        </div>
+        <div class="col-sm-1">
+            <button type="submit" class="btn btn-primary" formaction="/QueryCrud" 
+                name="buttonPressed" value="Update">Update</button>
+        </div>
+        <div class="col-sm-1">
+            <button type="submit" class="btn btn-primary" 
+                onclick="return confirm('Are you sure you want to delete this');" 
+                formaction="/QueryCrud" 
+                name="buttonPressed" value="CrudDelete">Delete</button>
+        </div>
+        <div class="col-sm-2">
+            <button type="submit" class="btn btn-primary" 
+                formaction="/QueryCrud" title="Back to Query Page" name="buttonPressed" value="CrudBackToQuery">Query Page</button>
+        </div>
+    </div>   
+} *@
+@* <input type="hidden" name="partialProductName" value="@Model.PartialProductName">
+<input type="hidden" name="selectedCategoryId" value="@Model.SelectedCategoryId">
+@{
+if(Model.Product != null)
+{
+    <div class="row mb-3">
+        <label for="ProductId" class="col-sm-2 col-form-label">Id</label>
+        <div class="col-sm-3">
+            <input type="number" class="form-control" readonly id="ProductId" 
+                name="productId" value="@Model.Product.ProductId" />
+        </div>
+        <div class="col-sm-1"></div>
+        <label for="ProductName" class="col-sm-2 col-form-label">Name</label>
+        <div class="col-sm-3">
+            <input type="text" class="form-control" id="ProductName" 
+                name="productName" value="@Model.Product.ProductName" />
+        </div>
+    </div>
+    <div class="row mb-3">
+        <label for="SupplierId" class="col-sm-2 col-form-label">Supplier</label>
+        <div class="col-sm-3">
+            <select class="form-control" id="SupplierId" name="supplierId">
+                <option value="0">select ...</option>
+                @foreach (var item in Model.SelectListOfSuppliers)
+                {
+                    if (Model.Product.SupplierId == item.SupplierId)
+                    {
+                        <option value="@item.SupplierId" selected>@item.CompanyName</option>
+                    }
+                    else
+                    {
+                        <option value="@item.SupplierId">@item.CompanyName</option>
+                    }
+                }
+            </select>
+        </div>
+        <div class="col-sm-1"></div>
+        <label for="CategoryId" class="col-sm-2 col-form-label">Category</label>
+        <div class="col-sm-3">
+            <select class="form-control" id="CategoryId" name="categoryId">
+                <option value="0">select ...</option>
+                @foreach (var item in Model.SelectListOfCatagories)
+                {
+                        if (Model.Product.CategoryId == item.CategoryId)
+                        {
+                            <option value="@item.CategoryId" selected>@item.CategoryName</option>
+                        }
+                        else
+                        {
+                            <option value="@item.CategoryId">@item.CategoryName</option>
+                        }
+                }
+            </select>
+        </div>
+    </div>
+    <div class="row mb-3">
+        <label for="QuantityPerUnit" class="col-sm-2 col-form-label">Quantity Per Unit</label>
+        <div class="col-sm-3">
+            <input type="text" class="form-control" id="QuantityPerUnit" 
+                name="quantityPerUnit" value="@Model.Product.QuantityPerUnit" />
+        </div>
+        <div class="col-sm-1"></div>
+        <label for="MinimumOrderQuantity" class="col-sm-2 col-form-label">Min Order Quantity</label>
+        <div class="col-sm-3">
+            <input type="number" class="form-control" id="MinimumOrderQuantity" 
+                name="minimumOrderQuantity" value="@Model.Product.MinimumOrderQuantity" />
+        </div>
+    </div>
+    <div class="row mb-3">
+        <label for="UnitPrice" class="col-sm-2 col-form-label">Unit Price</label>
+        <div class="col-sm-3">
+            <input type="number" class="form-control" id="UnitPrice" 
+                name="unitPrice" value="@Model.Product.UnitPrice" />
+        </div>
+        <div class="col-sm-1"></div>
+        <label for="UnitsOnOrder" class="col-sm-2 col-form-label">Units On Order</label>
+        <div class="col-sm-3">
+            <input type="number" class="form-control" id="UnitsOnOrder" 
+                name="unitsOnOrder" value="@Model.Product.UnitsOnOrder" />
+        </div>
+    </div>
+    <div class="row mb-3">
+        <label for="Discontinued" class="col-sm-2 col-form-label">Discontinued</label>
+        <div class="col-sm-3">
+            <input type="checkbox" id="Discontinued" 
+                name="discontinued" checked="@Model.Product.Discontinued" />
+        </div>
+    </div>
+} *@
+</form>
+</div>
+</section>

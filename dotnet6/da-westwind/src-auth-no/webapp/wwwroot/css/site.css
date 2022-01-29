@@ -16,3 +16,16 @@ html {
 body {
   margin-bottom: 60px;
 }
+
+:root {
+  --max-body-width: 80rem;
+}
+
+.halfpage {
+  width: 47%;
+  margin-right: 3%;
+}
+
+.setflex {
+  display: flex;
+}

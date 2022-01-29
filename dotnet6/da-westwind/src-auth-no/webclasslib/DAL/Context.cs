@@ -11,8 +11,8 @@ namespace DAL
             : base(options) {}
             
         public DbSet<BuildVersion> BuildVersion { get; set; }
-        // public DbSet<Category> Categories { get; set; }
-        // public DbSet<Product> Products { get; set; }
-        // public DbSet<Supplier> Suppliers { get; set; }
+        public DbSet<Category> Categories { get; set; }
+        public DbSet<Product> Products { get; set; }
+        public DbSet<Supplier> Suppliers { get; set; }
     }
 }

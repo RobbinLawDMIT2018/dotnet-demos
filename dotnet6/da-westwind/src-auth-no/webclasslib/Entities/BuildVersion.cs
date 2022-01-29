@@ -2,7 +2,7 @@ using System; //need for DateTime
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
-namespace Entities 
+namespace Entities
 {
     [Table("BuildVersion")]
     public class BuildVersion
