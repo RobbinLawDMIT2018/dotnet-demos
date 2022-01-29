@@ -32,15 +32,12 @@ namespace MyApp.Namespace
             {
                 Console.WriteLine("QueryModel: OnGet");
                 PopulateSelectList();
-                // Return the page but preserve any user inputs
-                return Page();
             }
             catch (Exception ex)
             {
                 GetInnerException(ex);
-                // Return the page but preserve any user inputs
-                return Page();
             }
+            return Page();
         }
 
         public IActionResult OnPost(string buttonPressed, string partialProductName, string selectedCategoryId, string successMessage)

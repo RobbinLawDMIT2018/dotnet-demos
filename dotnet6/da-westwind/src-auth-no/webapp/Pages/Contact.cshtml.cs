@@ -12,20 +12,19 @@ namespace MyApp.Namespace
 {
     public class ContactModel : PageModel
     {
-        // Allows for one-way binding of data
         public string Text1{get;set;}
-        // Allows for two-way binding of data
+
         [BindProperty] 
         public string Text2{get;set;}
-        // Allows for two-way binding of data
+        
         [BindProperty] 
         public string Text3{get;set;}
-        // Allows for one-way binding of data
+
         public int Number1{get;set;}
-        // Allows for two-way binding of data
+
         [BindProperty] 
         public int Number2{get;set;}
-        // Allows for two-way binding of data
+
         [BindProperty] 
         public int Number3{get;set;}
 
@@ -130,9 +129,7 @@ namespace MyApp.Namespace
         }
         public void GetInnerException(Exception e)
         {
-            // Start with the assumption that the given exception is the root of the problem
             Exception rootCause = e;
-            // Loop to "drill-down" to what the original cause of the problem is
             while (rootCause.InnerException != null)
                 rootCause = rootCause.InnerException;
             ErrorMessage = rootCause.Message;
