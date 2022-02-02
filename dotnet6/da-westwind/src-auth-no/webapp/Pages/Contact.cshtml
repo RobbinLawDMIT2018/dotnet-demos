@@ -50,34 +50,36 @@
 	</div>
 	<div class="row g-3 mb-3">
 		<div class="col-4">
-			<input type="email" placeholder="enter your email"
+			<input type="email" class="form-control" placeholder="enter your email"
 				name="Email" value="@Model.Email"/>
 		</div>
 		<div class="col-4">
 			@if(Model.MyDate == DateTime.MinValue)
 			{
-				<input type="date"  id="date" name="MyDate" value="" />
+				<input type="date" class="form-control" id="date" name="MyDate" value="" />
 			}
 			else
 			{
-				<input type="date"  id="date" name="MyDate" value='@Model.MyDate.ToString("yyyy-MM-dd")'/>
+				<input type="date" class="form-control" id="date" name="MyDate" value='@Model.MyDate.ToString("yyyy:MM:dd")'/>
 			}
 		</div>
+		<div class="col-4">
+			<select class="select-control" name="SelectedSubjectId">
+				@for (var index = 0; index < Model.SelectListOfSubjects.Count; index++)
+				{
+					if (Model.SelectedSubjectId == index)
+					{
+						<option value="@index" selected>@Model.SelectListOfSubjects[index]</option>
+					}
+					else
+					{
+						<option value="@index">@Model.SelectListOfSubjects[index]</option>
+					}
+				}
+			</select>
+		</div>
 	</div>
-	<Select name="SelectedSubjectId">
-	@for (var index = 0; index < Model.SelectListOfSubjects.Count; index++)
-	{
-		if (Model.SelectedSubjectId == index)
-		{
-			<option value="@index" selected>@Model.SelectListOfSubjects[index]</option>
-		}
-		else
-		{
-			<option value="@index">@Model.SelectListOfSubjects[index]</option>
-		}
-	}
-	</select>
-	</div>
+	
 	<textarea rows="5" cols="60" placeholder="enter your message"
 		name="MessageBody">@Model.MessageBody</textarea>
 	<br/>
