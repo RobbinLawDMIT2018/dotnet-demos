@@ -13,11 +13,10 @@ builder.Services.AddRazorPages();
 // Get the connection string.
 var connectionString = builder.Configuration.GetConnectionString("WWDB");
 
-// Context class as a DbContext using SQL Server
-// builder.Services.AddDbContext<Context>(context => 
-//     context.UseSqlServer(connectionString));
+//Context class as a DbContext using SQL Server
+//builder.Services.AddDbContext<Context>(context => context.UseSqlServer(connectionString));
 
-// DbServices class as a transient service
+//DbServices class as a transient service
 //builder.Services.AddTransient<DbVersionServices>();
 
 // Call the Backend Startup Extension to register services
