@@ -86,7 +86,7 @@ namespace MyApp.Namespace
                     SuccessMessage = $"T1={Text1}, T2={Text2}, T3={Text3}, N1={Number1}, N2={Number2}, N3={Number3}, Email={Email}, Date={MyDate}, Subject={SelectListOfSubjects[SelectedSubjectId]}, Text={MessageBody}, CheckBox={CheckBox}, Radio={Radio}";
                 } else if(ButtonPressed == "Clear")
                 {
-                    //SelectedSubjectId = 0;
+                    SelectedSubjectId = 0;
                     MyDate = DateTime.MinValue;
                     CheckBox = null;
                     Radio = "";
