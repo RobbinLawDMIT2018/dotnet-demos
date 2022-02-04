@@ -65,7 +65,7 @@
 			}
 		</div>
 		<div class="col-4">
-			<select class="select-control" name="SelectedSubjectId">
+			<select class="form-select" name="SelectedSubjectId">
 				@for (var index = 0; index < Model.SelectListOfSubjects.Count; index++)
 				{
 					if (Model.SelectedSubjectId == index)
@@ -80,54 +80,76 @@
 			</select>
 		</div>
 	</div>
-	
-	<textarea rows="5" cols="60" placeholder="enter your message"
-		name="MessageBody">@Model.MessageBody</textarea>
-	<br/>
-	<label>CheckBox:</label>
-	<input type="checkbox" name="CheckBox" checked="@Model.CheckBox" />
-	<br/>
-	<div>
-		<span>Radio Button Group:</span>
-		@if(Model.Radio == "email")
-		{
-			<input type="radio" id="radio1"
-				name="Radio" value="email" checked>
-		}
-		else
-		{
-			<input type="radio" id="radio1"
-				name="Radio" value="email">
-		}   
-		<label for="radio1">Email</label>
-		@if(Model.Radio == "phone")
-		{
-			<input type="radio" id="radio2"
-				name="Radio" value="phone" checked>
-		}
-		else
-		{
-			<input type="radio" id="radio2"
-				name="Radio" value="phone">
-		}   
-		<label for="radio2">Phone</label>
-		@if(Model.Radio == "mail")
-		{
-			<input type="radio" id="radio3"
-				name="Radio" value="mail" checked>
-		}
-		else
-		{
-			<input type="radio" id="radio3"
-				name="Radio" value="mail">
-		}   
-		<label for="radio3">Mail</label>
+	<div class="row g-3 mb-3">
+		<div class="col-4">
+			<textarea rows="5" cols="60" placeholder="enter your message"
+				name="MessageBody">@Model.MessageBody</textarea>
+		</div>
 	</div>
-	<label>Range:</label>
-	<input type="range" name="Range" checked="@Model.Range"/>
-	<br/>
-	<button type="submit" name="ButtonPressed" value="Submit">Submit</button>
-	<button type="submit" name="ButtonPressed" value="Clear">Clear</button>
+	<div class="row g-3 mb-3">
+		<div class="col-4">
+			<div class="form-check">
+				<label class="form-check-label" for="CheckBox">CheckBox:</label>
+				<input type="checkbox" class="form-check-input" id="CheckBox"
+					name="CheckBox" checked="@Model.CheckBox" />
+			</div>
+		</div>
+		<div class="col-4">
+			<span>Radio Button Group:</span>
+			<div class="form-check">
+				@if(Model.Radio == "email")
+				{
+					<input type="radio" class="form-check-input" id="radio1"
+						name="Radio" value="email" checked>
+				}
+				else
+				{
+					<input type="radio" class="form-check-input" id="radio1"
+						name="Radio" value="email">
+				}   
+				<label for="radio1" class="form-check-label">Email</label>
+			</div>
+			<div class="form-check">
+				@if(Model.Radio == "phone")
+				{
+					<input type="radio" class="form-check-input" id="radio2"
+						name="Radio" value="phone" checked>
+				}
+				else
+				{
+					<input type="radio" class="form-check-input" id="radio2"
+						name="Radio" value="phone">
+				}   
+				<label for="radio2" class="form-check-label">Phone</label>
+			</div>
+			<div class="form-check">
+				@if(Model.Radio == "mail")
+				{
+					<input type="radio" class="form-check-input" id="radio3"
+						name="Radio" value="mail" checked>
+				}
+				else
+				{
+					<input type="radio" class="form-check-input" id="radio3"
+						name="Radio" value="mail">
+				}   
+				<label for="radio3" class="form-check-label">Mail</label>
+			</div>
+		</div>
+		<div class="col-4">
+			<label>Range:</label>
+			<input type="range" class="form-range" 
+				name="Range" checked="@Model.Range"/>
+		</div>
+	</div>
+	<div class="row g-3 mb-3">
+		<div class="col-4">
+			<button type="submit" class="btn btn-dark" 
+				name="ButtonPressed" value="Submit">Submit</button>
+			<button type="submit" class="btn btn-dark" 
+				name="ButtonPressed" value="Clear">Clear</button>
+		</div>
+	</div>
 </form>
 </div>
 
