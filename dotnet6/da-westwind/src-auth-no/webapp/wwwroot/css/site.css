@@ -23,13 +23,16 @@
   border-color: var(--border-color);
   box-shadow:  var(--box-shadow);
 }
-select option:checked,
+select option:checked {
+  background-color: red;
+}
 select option:hover {
-    box-shadow: 0 0 10px 100px #000 inset;
+  background-color: yellow;
+    /* box-shadow: 0 0 10px 100px #000 inset; */
     /* background: var(--background-color); */
 }
 select option:active {
-  background-color: var(--background-color);
+  background-color: green;
 }
 
 /* select:focus > option:checked {
