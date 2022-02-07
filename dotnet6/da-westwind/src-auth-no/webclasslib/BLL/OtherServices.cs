@@ -10,7 +10,8 @@ namespace BLL
     public class OtherServices 
     {
         private readonly Context Context;
-        public  OtherServices(Context context) {
+        public  OtherServices(Context context) 
+        {
             if (context == null)
                 throw new ArgumentNullException();
             Context = context;

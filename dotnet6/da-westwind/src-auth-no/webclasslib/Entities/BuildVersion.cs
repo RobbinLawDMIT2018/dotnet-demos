@@ -5,7 +5,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 namespace Entities
 {
     [Table("BuildVersion")]
-    public class BuildVersion
+    public class BuildVersion : Object
     {
         [Key]
         public int Id { get; set; }
