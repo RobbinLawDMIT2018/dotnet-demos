@@ -46,7 +46,7 @@ namespace MyApp.Namespace
 			try
 			{
 				Console.WriteLine("QueryModel: OnGet");
-				PopulateSelectList();
+				PopulateSelectLists();
 			}
 			catch (Exception ex)
 			{
@@ -60,17 +60,20 @@ namespace MyApp.Namespace
 			try
 			{
 				Console.WriteLine("QueryModel: OnPost");
+				Console.WriteLine($"ProductId= {ProductId}");
+				Console.WriteLine($"Product.ProductId= {Product.ProductId}");
+				Console.WriteLine($"Product.ProductName= {Product.ProductName}");
 				if(ButtonPressed == "SearchByPartialProductName")
 				{
 					FilterType = "PartialString";
-					GetProducts(FilterType);
-					SuccessMessage = "Search By Partial Product Name Successful";
+					// GetProducts(FilterType);
+					// SuccessMessage = "Search By Partial Product Name Successful";
 				}
 				else if(ButtonPressed == "SearchByCategory")
 				{
 					FilterType = "DropDown";
-					GetProducts(FilterType);
-					SuccessMessage = "Search By Category Successful";
+					// GetProducts(FilterType);
+					// SuccessMessage = "Search By Category Successful";
 				}
 				else if(ButtonPressed == "Update")
 				{
@@ -104,35 +107,39 @@ namespace MyApp.Namespace
 					Product = new Product();
 					SuccessMessage = "Delete Successful";
 				}
+				else if(ButtonPressed == "Clear")
+				{
+					Product = new Product();
+					SuccessMessage = "Clear Successful";
+				}
 				else if(Product.ProductId != 0)
 				{
 						Product = Services.Retrieve(Product.ProductId);
-						SuccessMessage = "Retrieve Successful";
+						SuccessMessage = "Product Retrieve Successful";
 				}
 				else 
 				{
-					Console.WriteLine("you must have pressed an Edit");
-					// Console.WriteLine(ProductId);
-					// Product.ProductId = ProductId;
-					// Console.WriteLine(Product.ProductId);
+					SuccessMessage = "What just happened";
 				}
-				PopulateSelectList();
-				GetProducts(FilterType);
+				
 			}
 			catch (Exception ex)
 			{
 				GetInnerException(ex);
 			}
+			PopulateSelectLists();
+			GetProducts(FilterType);
 			return Page();
 			
 		}
 
-		private void PopulateSelectList()
+		private void PopulateSelectLists()
 		{
 			try
 			{
-				Console.WriteLine("Querymodel: PopulateSelectList");
+				Console.WriteLine("Querymodel: PopulateSelectLists");
 				SelectListOfCatagories = Services.ListCategories();
+				SelectListOfSuppliers = Services.ListSuppliers();
 			}
 			catch (Exception ex)
 			{ 
