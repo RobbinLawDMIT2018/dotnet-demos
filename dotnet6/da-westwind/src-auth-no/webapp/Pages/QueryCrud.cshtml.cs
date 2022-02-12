@@ -32,6 +32,9 @@ namespace MyApp.Namespace
         [BindProperty]
         public Product Product {get;set;} = new();
         [BindProperty]
+        public int ProductId {get;set;} 
+
+        [BindProperty]
         public List<Category> SelectListOfCatagories {get;set;}
         [BindProperty]
         public List<Supplier> SelectListOfSuppliers {get;set;}
@@ -62,6 +65,12 @@ namespace MyApp.Namespace
                 else if(ButtonPressed == "SearchByCategory")
                 {
                     SearchedProducts = Services.FindProductsByCategory(SelectedCategoryId);
+                }
+                else {
+                    Console.WriteLine("you must have pressed an Edit");
+                    Console.WriteLine(ProductId);
+                    Product.ProductId = ProductId;
+                    Console.WriteLine(Product.ProductId);
                 }
                 PopulateSelectList();
             }
