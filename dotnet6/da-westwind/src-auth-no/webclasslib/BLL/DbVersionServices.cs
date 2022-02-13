@@ -20,7 +20,7 @@ namespace BLL
         public BuildVersion GetDbVersion() 
         {
             Console.WriteLine($"DbServices: GetDbVersion;");
-            var result = Context.BuildVersion.ToList();
+            var result = Context.BuildVersions.ToList();
             return result.First();
         }
         

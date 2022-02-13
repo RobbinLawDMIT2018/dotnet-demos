@@ -76,6 +76,10 @@ namespace BLL
         public void Delete(Product item)
         {
             Console.WriteLine($"WestWindServices: Delete; productId= {item.ProductId}");
+            // List<ProgramCourse> SearchedRecords = Context.ProgramCourses.Where(x => x.ProgramId == item.ProgramId).ToList();
+            // if(SearchedRecords.Count != 0)
+            //     throw new Exception("Cannot delete a program that has a course");
+
             var existing = Context.Entry(item);
             existing.State = EntityState.Deleted;
             Context.SaveChanges();

@@ -4,12 +4,16 @@ using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using Microsoft.EntityFrameworkCore;
 
-#nullable disable
-
 namespace Entities
 {
-    public class Category
+    [Index(nameof(CategoryName), Name = "CategoryName")]
+    public partial class Category
     {
+        public Category()
+        {
+            Products = new HashSet<Product>();
+        }
+
         [Key]
         [Column("CategoryID")]
         public int CategoryId { get; set; }
@@ -21,5 +25,8 @@ namespace Entities
         public byte[] Picture { get; set; }
         [StringLength(40)]
         public string PictureMimeType { get; set; }
+
+        [InverseProperty(nameof(Product.Category))]
+        public virtual ICollection<Product> Products { get; set; }
     }
 }
