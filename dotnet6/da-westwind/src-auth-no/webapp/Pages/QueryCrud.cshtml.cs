@@ -34,7 +34,7 @@ namespace MyApp.Namespace
 		[BindProperty]
 		public Product Product {get;set;} = new();
 		[BindProperty]
-		public int ProductId {get;set;} 
+		public string Discontinued {get;set;} 
 
 		[BindProperty]
 		public List<Category> SelectListOfCatagories {get;set;}
@@ -60,7 +60,7 @@ namespace MyApp.Namespace
 			try
 			{
 				Console.WriteLine("QueryModel: OnPost");
-				Console.WriteLine($"ProductId= {ProductId}");
+				//Console.WriteLine($"ProductId= {ProductId}");
 				Console.WriteLine($"Product.ProductId= {Product.ProductId}");
 				Console.WriteLine($"Product.ProductName= {Product.ProductName}");
 				if(ButtonPressed == "SearchByPartialProductName")
@@ -85,6 +85,10 @@ namespace MyApp.Namespace
 							throw new ArgumentException("CategoryId cannot be 0");
 					if(string.IsNullOrEmpty(Product.QuantityPerUnit))
 							throw new ArgumentException("QuantityPerUnit cannot be empty");
+					if(Discontinued == "on")
+						Product.Discontinued = true;
+					else
+						Product.Discontinued = false;
 					Services.Edit(Product);
 					SuccessMessage = "Update Successful";
 				}
@@ -98,6 +102,10 @@ namespace MyApp.Namespace
 							throw new ArgumentException("CategoryId cannot be 0");
 					if(string.IsNullOrEmpty(Product.QuantityPerUnit))
 							throw new ArgumentException("QuantityPerUnit cannot be empty");
+					if(Discontinued == "on")
+						Product.Discontinued = true;
+					else
+						Product.Discontinued = false;
 					Services.Add(Product);
 					SuccessMessage = "Add Successful";
 				}

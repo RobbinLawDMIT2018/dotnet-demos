@@ -13,6 +13,42 @@
   --background-color: #212529;
 }
 
+.error-message {
+  color: var(--bg-color-error);
+  font-weight: bold;
+}
+
+.success-message {
+  color: var(--bg-color-success);
+  font-weight: bold;
+}
+#table_box_bootstrap{
+  display: none;
+}
+
+.box div, .box ul {
+  float: right;
+}
+
+.pagination>li>a{
+  position: relative;
+  float: left;
+  padding: 6px 12px;
+  margin-left: -1px;
+  line-height: 1.42857143;
+  color: var(--border-color);
+  text-decoration: none;
+  background-color: #fff;
+  border: 1px solid #ddd;
+}
+
+.pagination>.active>a{
+  z-index: 3;
+  color: #fff;
+  cursor: default;
+  background-color: var(--background-color);
+  border-color: var(--border-color);
+}
 
 .form-control:focus {
     border-color: var(--border-color);
@@ -67,13 +103,4 @@ html {
 
 body {
   margin-bottom: var(--body-margin);
-}
-
-.halfpage {
-  width: 47%;
-  margin-right: 3%;
-}
-
-.setflex {
-  display: flex;
 }
