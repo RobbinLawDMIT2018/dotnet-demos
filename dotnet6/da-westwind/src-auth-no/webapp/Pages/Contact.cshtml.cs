@@ -96,11 +96,11 @@ namespace MyApp.Namespace
             }
             catch (AggregateException e)
             {
-                GetAggregateException(e);
+                ErrorMessage = e.Message;
             }
             catch (Exception e)
             {
-                GetInnerException(e);
+                ErrorMessage = GetInnerException(e);
             }
             return Page();
         }
@@ -117,21 +117,12 @@ namespace MyApp.Namespace
             }
         }
 
-        public void GetAggregateException(AggregateException e)
-        {
-            ErrorMessage = e.Message;
-            Console.WriteLine("AggregateExceptions: ");
-            foreach (Exception innerException in e.InnerExceptions)
-                {
-                    Console.WriteLine(innerException.Message);
-                }
-        }
-        public void GetInnerException(Exception e)
+        public string GetInnerException(Exception e)
         {
             Exception rootCause = e;
             while (rootCause.InnerException != null)
                 rootCause = rootCause.InnerException;
-            ErrorMessage = rootCause.Message;
+            return rootCause.Message;
         }
     }
 }

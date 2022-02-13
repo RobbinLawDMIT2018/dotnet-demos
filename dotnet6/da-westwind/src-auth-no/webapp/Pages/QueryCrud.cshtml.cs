@@ -17,12 +17,11 @@ namespace MyApp.Namespace
 			Services = services;
 		}
 
+		public string SuccessMessage { get; set; }
+		public string ErrorMessage { get; set; }
+		public List<Exception> errors {get; set;} = new();
 		[BindProperty]
 		public string ButtonPressed {get; set;}
-		[BindProperty]
-		public string SuccessMessage { get; set; }
-		[BindProperty]
-		public string ErrorMessage { get; set; }
 		[BindProperty]
 		public string FilterType {get;set;}
 		[BindProperty]
@@ -77,35 +76,21 @@ namespace MyApp.Namespace
 				}
 				else if(ButtonPressed == "Update")
 				{
-					if(string.IsNullOrEmpty(Product.ProductName))
-							throw new ArgumentException("ProductName cannot be empty");
-					if(Product.SupplierId == 0)
-							throw new ArgumentException("SupplierId cannot be 0");
-					if(Product.CategoryId == 0)
-							throw new ArgumentException("CategoryId cannot be 0");
-					if(string.IsNullOrEmpty(Product.QuantityPerUnit))
-							throw new ArgumentException("QuantityPerUnit cannot be empty");
 					if(Discontinued == "on")
 						Product.Discontinued = true;
 					else
 						Product.Discontinued = false;
+					FormValidation();
 					Services.Edit(Product);
 					SuccessMessage = "Update Successful";
 				}
 				else if(ButtonPressed == "Add")
 				{
-					if(string.IsNullOrEmpty(Product.ProductName))
-							throw new ArgumentException("ProductName cannot be empty");
-					if(Product.SupplierId == 0)
-							throw new ArgumentException("SupplierId cannot be 0");
-					if(Product.CategoryId == 0)
-							throw new ArgumentException("CategoryId cannot be 0");
-					if(string.IsNullOrEmpty(Product.QuantityPerUnit))
-							throw new ArgumentException("QuantityPerUnit cannot be empty");
 					if(Discontinued == "on")
 						Product.Discontinued = true;
 					else
 						Product.Discontinued = false;
+					FormValidation();
 					Services.Add(Product);
 					SuccessMessage = "Add Successful";
 				}
@@ -131,9 +116,13 @@ namespace MyApp.Namespace
 				}
 				
 			}
+			catch (AggregateException ex)
+			{
+				ErrorMessage = ex.Message;
+			}
 			catch (Exception ex)
 			{
-				GetInnerException(ex);
+				ErrorMessage = GetInnerException(ex);
 			}
 			PopulateSelectLists();
 			GetProducts(FilterType);
@@ -151,7 +140,7 @@ namespace MyApp.Namespace
 			}
 			catch (Exception ex)
 			{ 
-				GetInnerException(ex);
+				ErrorMessage = GetInnerException(ex);
 			}
 		}
 
@@ -167,16 +156,31 @@ namespace MyApp.Namespace
 			}
 			catch (Exception ex)
 			{ 
-				GetInnerException(ex);
+				ErrorMessage = GetInnerException(ex);
 			}
 		}
 
-		public void GetInnerException(Exception ex)
+		public void FormValidation()
 		{
-			Exception rootCause = ex;
+			if(string.IsNullOrEmpty(Product.ProductName))
+				errors.Add(new Exception("ProductName"));
+			if(Product.SupplierId == 0)
+				errors.Add(new Exception("SupplierId"));
+			if(Product.CategoryId == 0)
+				errors.Add(new Exception("CategoryId"));
+			if(string.IsNullOrEmpty(Product.QuantityPerUnit))
+				errors.Add(new Exception("QuantityPerUnit"));
+			
+			if (errors.Count() > 0)
+					throw new AggregateException("Invalid Data: ", errors);
+		}
+
+		public string GetInnerException(Exception e)
+		{
+			Exception rootCause = e;
 			while (rootCause.InnerException != null)
-				rootCause = rootCause.InnerException;
-			ErrorMessage = rootCause.Message;
+					rootCause = rootCause.InnerException;
+			return rootCause.Message;
 		}
 	}
 }
