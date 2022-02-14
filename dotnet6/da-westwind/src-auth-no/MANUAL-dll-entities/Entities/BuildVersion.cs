@@ -1,13 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
+using System; //need for DateTime
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
-using Microsoft.EntityFrameworkCore;
 
 namespace Entities
 {
     [Table("BuildVersion")]
-    public partial class BuildVersion
+    public class BuildVersion : Object
     {
         [Key]
         public int Id { get; set; }
@@ -16,5 +14,10 @@ namespace Entities
         public int Build { get; set; }
         [Column(TypeName = "datetime")]
         public DateTime ReleaseDate { get; set; }
+
+        public override string ToString() 
+        {
+		    return $"Id: {Id}, Major: {Major}, Minor: {Minor}, Build: {Build}, Release Date: {ReleaseDate}";
+	    }
     }
 }
