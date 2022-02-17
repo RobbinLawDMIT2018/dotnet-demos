@@ -4,6 +4,8 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
+
+//Additional namespaces
 using BLL;
 using Entities;
 
@@ -19,7 +21,7 @@ namespace MyApp.Namespace
 
 		public string SuccessMessage { get; set; }
 		public string ErrorMessage { get; set; }
-		public List<Exception> errors {get; set;} = new();
+		public List<Exception> Errors {get; set;} = new();
 		[BindProperty]
 		public string ButtonPressed {get; set;}
 		[BindProperty]
@@ -59,20 +61,14 @@ namespace MyApp.Namespace
 			try
 			{
 				Console.WriteLine("QueryModel: OnPost");
-				//Console.WriteLine($"ProductId= {ProductId}");
-				Console.WriteLine($"Product.ProductId= {Product.ProductId}");
-				Console.WriteLine($"Product.ProductName= {Product.ProductName}");
+
 				if(ButtonPressed == "SearchByPartialProductName")
 				{
 					FilterType = "PartialString";
-					// GetProducts(FilterType);
-					// SuccessMessage = "Search By Partial Product Name Successful";
 				}
 				else if(ButtonPressed == "SearchByCategory")
 				{
 					FilterType = "DropDown";
-					// GetProducts(FilterType);
-					// SuccessMessage = "Search By Category Successful";
 				}
 				else if(ButtonPressed == "Update")
 				{
@@ -114,7 +110,6 @@ namespace MyApp.Namespace
 				{
 					SuccessMessage = "What just happened";
 				}
-				
 			}
 			catch (AggregateException ex)
 			{
@@ -163,16 +158,16 @@ namespace MyApp.Namespace
 		public void FormValidation()
 		{
 			if(string.IsNullOrEmpty(Product.ProductName))
-				errors.Add(new Exception("ProductName"));
+				Errors.Add(new Exception("ProductName"));
 			if(Product.SupplierId == 0)
-				errors.Add(new Exception("SupplierId"));
+				Errors.Add(new Exception("SupplierId"));
 			if(Product.CategoryId == 0)
-				errors.Add(new Exception("CategoryId"));
+				Errors.Add(new Exception("CategoryId"));
 			if(string.IsNullOrEmpty(Product.QuantityPerUnit))
-				errors.Add(new Exception("QuantityPerUnit"));
+				Errors.Add(new Exception("QuantityPerUnit"));
 			
-			if (errors.Count() > 0)
-					throw new AggregateException("Invalid Data: ", errors);
+			if (Errors.Count() > 0)
+					throw new AggregateException("Invalid Data: ", Errors);
 		}
 
 		public string GetInnerException(Exception e)
