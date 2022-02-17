@@ -109,7 +109,7 @@ namespace DAL
         public Context(DbContextOptions<Context> options)
             : base(options) {}
     
-        public DbSet<BuildVersion> BuildVersion { get; set; }
+        public DbSet<BuildVersion> BuildVersions { get; set; }
     }
 }
 ```
@@ -144,7 +144,7 @@ namespace BLL
         public DbVersion GetDbVersion() 
         {
             Console.WriteLine($"DbServices: GetDbVersion;");
-            var result = Context.BuildVersion.ToList();
+            var result = Context.BuildVersions.ToList();
             return result.First();
         }
 ```
@@ -294,17 +294,17 @@ namespace MyApp.Namespace
             }
             catch (Exception ex)
             {
-                GetInnerException(ex);
+                ErrorMessage = GetInnerException(ex);
             }
             
         }
 
-        public void GetInnerException(Exception ex)
+        public string GetInnerException(Exception ex)
         {
             Exception rootCause = ex;
             while (rootCause.InnerException != null)
                 rootCause = rootCause.InnerException;
-            ErrorMessage = rootCause.Message;
+            return rootCause.Message;
         }
     }
 }
