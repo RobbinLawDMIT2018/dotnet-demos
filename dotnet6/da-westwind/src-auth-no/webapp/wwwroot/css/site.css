@@ -1,5 +1,4 @@
 :root {
-  /* --bs-primary: #6c757d; */
   --rem-font-size: 16px;
   --body-width: 80rem;
   --body-margin: 60px;
@@ -22,6 +21,18 @@
   color: var(--bg-color-success);
   font-weight: bold;
 }
+
+button.link {
+background: none;
+border: none;
+padding: 0;
+}
+
+button.link:hover {
+	text-decoration: underline;
+	cursor: pointer;
+}
+
 #table_box_bootstrap{
   display: none;
 }
@@ -59,28 +70,6 @@
   border-color: var(--border-color);
   box-shadow:  var(--box-shadow);
 }
-
-/* select option:checked {
-  background-color: red;
-}
-select option:hover {
-  background-color: yellow;
-    box-shadow: 0 0 10px 100px #000 inset;
-    background: var(--background-color);
-}
-select option:active {
-  background-color: green;
-} */
-
-/* select:focus > option:checked {
-  background-color: var(--background-color);
-}  */
-
-/* .show > .btn-primary.dropdown-toggle {
-  color: #fff;
-  background-color: var(--background-color);
-  border-color: var(--border-color);
-} */
 
 .dropdown-item:active {
   color: #fff;
