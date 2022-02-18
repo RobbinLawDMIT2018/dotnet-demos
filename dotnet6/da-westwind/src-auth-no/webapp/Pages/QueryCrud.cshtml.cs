@@ -82,6 +82,16 @@ namespace MyApp.Namespace
 				{
 					FilterType = "DropDown";
 				}
+				else if(ButtonPressed == "Add")
+				{
+					if(Discontinued == "on")
+						Product.Discontinued = true;
+					else
+						Product.Discontinued = false;
+					FormValidation();
+					Product.ProductId = ProductServices.Add(Product);
+					SuccessMessage = "Add Successful";
+				}
 				else if(ButtonPressed == "Update")
 				{
 					if(Discontinued == "on")
@@ -92,19 +102,9 @@ namespace MyApp.Namespace
 					ProductServices.Edit(Product);
 					SuccessMessage = "Update Successful";
 				}
-				else if(ButtonPressed == "Add")
-				{
-					if(Discontinued == "on")
-						Product.Discontinued = true;
-					else
-						Product.Discontinued = false;
-					FormValidation();
-					//Services.Add(Product);
-					SuccessMessage = "Add Successful";
-				}
 				else if(ButtonPressed == "Delete")
 				{
-					//Services.Delete(Product);
+					ProductServices.Delete(Product);
 					Product = new ProductItem();
 					SuccessMessage = "Delete Successful";
 				}
@@ -120,7 +120,7 @@ namespace MyApp.Namespace
 				}
 				else 
 				{
-					SuccessMessage = "What just happened";
+					ErrorMessage = "Danger: At the end of our ropes!";
 				}
 			}
 			catch (AggregateException ex)

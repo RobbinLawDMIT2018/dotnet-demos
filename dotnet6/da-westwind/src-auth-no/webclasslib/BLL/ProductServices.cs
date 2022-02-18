@@ -15,6 +15,7 @@ namespace BLL
 	public class ProductServices
 	{
 		#region Constructor Dependency Injection
+
 		private readonly Context Context;
 		public ProductServices(Context context)
 		{
@@ -25,6 +26,7 @@ namespace BLL
 		#endregion
 
 		#region Queries
+
 		public List<ProductList> FindProductsByPartialName(string partialName)
 		{
 			Console.WriteLine($"ProductServices: FindProductsByPartialName(); partialName= {partialName}");
@@ -90,33 +92,11 @@ namespace BLL
 		}
 		#endregion
 
-		#region Edit, Add, Delete
-		public void Edit(ProductItem item)
-		{
-				Console.WriteLine($"ProductServices: Edit; productId = {item.ProductId}");
-				var info = Context.Products.Find(item.ProductId);
-				if (info == null)
-			 		throw new Exception("Product does not exist");
-				info.ProductId = item.ProductId;
-				info.ProductName = item.ProductName;
-				info.SupplierId = item.SupplierId;
-				info.CategoryId = item.CategoryId;
-				info.QuantityPerUnit = item.QuantityPerUnit;
-				info.MinimumOrderQuantity = item.MinimumOrderQuantity;
-				info.UnitPrice = item.UnitPrice;
-				info.UnitsOnOrder = item.UnitsOnOrder;
-				info.Discontinued = item.Discontinued;
-				var updating = Context.Entry(info);
-				updating.State = Microsoft.EntityFrameworkCore.EntityState.Modified;
-				Context.SaveChanges();
-		}
+		#region Add, Edit, Delete
 
-		// 	return Context.SaveChanges();
-
-		public void Add(ProductItem item)
+		public int Add(ProductItem item)
 		{
 			Console.WriteLine($"ProductServices: Add; productId= {item.ProductId}");
-
 			var newProduct = new Product();
 			newProduct.ProductId = item.ProductId;
 			newProduct.ProductName = item.ProductName;
@@ -129,56 +109,39 @@ namespace BLL
 			newProduct.Discontinued = item.Discontinued;
 			Context.Products.Add(newProduct);
 			Context.SaveChanges();
-			//return newProduct.ProductId;
+			return newProduct.ProductId;
 		}
 
+		public void Edit(ProductItem item)
+		{
+				Console.WriteLine($"ProductServices: Edit; productId= {item.ProductId}");
+				Product existing = Context.Products.Find(item.ProductId);
+				if (existing == null)
+			 		throw new Exception("Product does not exist");
+				existing.ProductId = item.ProductId;
+				existing.ProductName = item.ProductName;
+				existing.SupplierId = item.SupplierId;
+				existing.CategoryId = item.CategoryId;
+				existing.QuantityPerUnit = item.QuantityPerUnit;
+				existing.MinimumOrderQuantity = item.MinimumOrderQuantity;
+				existing.UnitPrice = item.UnitPrice;
+				existing.UnitsOnOrder = item.UnitsOnOrder;
+				existing.Discontinued = item.Discontinued;
+				EntityEntry<Product> updating = Context.Entry(existing);
+				updating.State = Microsoft.EntityFrameworkCore.EntityState.Modified;
+				Context.SaveChanges();
+		}
 
-
-		// public void Delete(Product item)
-		// {
-		// 		Console.WriteLine($"ProductServices: Delete; productId= {item.ProductId}");
-		// 		var existing = Context.Entry(item);
-		// 		existing.State = EntityState.Deleted;
-		// 		Context.SaveChanges();
-		// }
+		public void Delete(ProductItem item)
+		{
+			Console.WriteLine($"ProductServices: Delete; productId= {item.ProductId}");
+			Product existing = Context.Products.Find(item.ProductId);
+				if (existing == null)
+			 		throw new Exception("Product does not exist");
+			EntityEntry<Product> removing = Context.Entry(existing);
+			removing.State = Microsoft.EntityFrameworkCore.EntityState.Deleted;
+			Context.SaveChanges();
+		}
 		#endregion
-
-		// public int AddMovie(MovieItem item)
-		// {
-		// 	var existing = Context.Movies.FirstOrDefault(x => x.Title == item.Title && x.ReleaseYear == item.ReleaseYear && x.Length == item.Length);
-		// 	if (existing != null)
-		// 		throw new Exception("A movie with the same title, release year, and length already exists");
-		// 	#endregion
-
-		// 	Movie movie = new Movie
-		// 	{
-		// 		Title = item.Title,
-		// 		ReleaseYear = item.ReleaseYear,
-		// 		RatingId = item.RatingId,
-		// 		GenreId = item.GenreId,
-		// 		ScreenTypeId = item.ScreenTypeId,
-		// 		Length = item.Length
-		// 	};
-		// 	Context.Movies.Add(movie);
-		// 	Context.SaveChanges();
-		// 	return movie.MovieId;
-
-
-		
-
-		// public int RemoveMovie(MovieItem item)
-		// {
-		// 	#region STUDENT CODE HERE
-		// 	//TODO: Business process rule(s)
-
-		// 	Movie exists = Context.Movies.Find(item.MovieId);
-		// 	if (exists == null)
-		// 		throw new Exception("The movie does not exist");
-		// 	#endregion
-
-		// 	EntityEntry<Movie> removing = Context.Entry(exists);
-		// 	removing.State = Microsoft.EntityFrameworkCore.EntityState.Deleted;
-		// 	return Context.SaveChanges();
-		// }
 	}
 }

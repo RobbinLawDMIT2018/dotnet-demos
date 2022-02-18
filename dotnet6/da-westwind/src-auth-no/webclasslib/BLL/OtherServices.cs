@@ -19,40 +19,10 @@ namespace BLL
 
         #region QUERY
         
-        // public List<Product> FindProductsByPartialProductName(string partialProductName)
-        // {
-        //     Console.WriteLine($"WestWindServices: FindProductsByPartialProductName(); partialProductName= {partialProductName}");
-        //     return Context.Products.Where(x=>x.ProductName.Contains(partialProductName))
-        //                            .OrderBy(x => x.ProductName).ToList();
-        // }   
-        #endregion
         
-        // #region READ - Edit, Add, Delete
-        // public void Edit(Product item)
-        // {
-        //     Console.WriteLine($"WestWindServices: Edit; productId = {item.ProductId}");
-        //     var existing = Context.Entry(item);
-        //     existing.State = EntityState.Modified;
-        //     Context.SaveChanges();
-        // }
-        // public void Add(Product item)
-        // {
-        //     Console.WriteLine($"WestWindServices: Add; productId= {item.ProductId}");
-        //     Context.Products.Add(item);
-        //     Context.SaveChanges();
-        // }
-        // public void Delete(Product item)
-        // {
-        //     Console.WriteLine($"WestWindServices: Delete; productId= {item.ProductId}");
-        //     var existing = Context.Entry(item);
-        //     existing.State = EntityState.Deleted;
-        //     Context.SaveChanges();
-        // }
-        // #endregion
+        #endregion
     }
 }
-
-
 
 // List<ProgramCourse> SearchedRecords = Context.ProgramCourses.Where(x => x.ProgramId == item.ProgramId).ToList();
             // if(SearchedRecords.Count != 0)
