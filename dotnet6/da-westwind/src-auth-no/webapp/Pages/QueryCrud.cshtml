@@ -31,9 +31,9 @@
 				<option value="0">select ...</option>
 				@foreach (var item in Model.SelectListOfCatagories)
 				{
-					<option value="@item.CategoryId" 
-						selected=@(Model.SelectedCategoryId == item.CategoryId)>
-						@item.CategoryName
+					<option value="@item.ValueField" 
+						selected=@(Model.SelectedCategoryId == item.ValueField)>
+						@item.DisplayField
 					</option>
 				}
 			</select>
@@ -75,18 +75,19 @@
 				</button>
 			</td>
 			<td>@item.ProductName</td>
-			<td>
+			<td>@item.Category</td>
+			@* <td>
 			<select disabled>
 				<option value="0">select ...</option>
 				@foreach (var element in Model.SelectListOfCatagories)
 				{
-					<option value="@element.CategoryId" 
-					selected=@(item.CategoryId == element.CategoryId)>
-					@element.CategoryName
+					<option value="@element.ValueField" 
+					selected=@(item.CategoryId == element.ValueField)>
+					@element.DisplayField
 					</option>
 				}
 			</select>  
-			</td>
+			</td> *@
 			<td>@item.QuantityPerUnit</td>
 			<td>@item.UnitPrice</td>
 			<td>
@@ -121,9 +122,9 @@
 				<option value="0">select ...</option>
 				@foreach (var item in Model.SelectListOfSuppliers)
 				{
-					<option value="@item.SupplierId" 
-					selected=@(Model.Product.SupplierId == item.SupplierId)>
-					@item.CompanyName
+					<option value="@item.ValueField" 
+					selected=@(Model.Product.SupplierId == item.ValueField)>
+					@item.DisplayField
 					</option>
 				}
 			</select>
@@ -134,9 +135,9 @@
 				<option value="0">select ...</option>
 				@foreach (var item in Model.SelectListOfCatagories)
 				{
-					<option value="@item.CategoryId" 
-					selected=@(Model.Product.CategoryId == item.CategoryId)>
-					@item.CategoryName
+					<option value="@item.ValueField" 
+					selected=@(Model.Product.CategoryId == item.ValueField)>
+					@item.DisplayField
 					</option>
 				}
 			</select>

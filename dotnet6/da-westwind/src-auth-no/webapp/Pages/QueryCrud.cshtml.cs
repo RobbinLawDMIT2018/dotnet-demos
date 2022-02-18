@@ -8,15 +8,25 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 //Additional namespaces
 using BLL;
 using Entities;
+using ViewModels;
 
 namespace MyApp.Namespace
 {
 	public class QueryCrudModel : PageModel
 	{
 		private readonly OtherServices Services;
-		public QueryCrudModel(OtherServices services)
+		private readonly ProductServices ProductServices;
+		private readonly CategoryServices CategoryServices;
+    private readonly SupplierServices SupplierServices;
+		public QueryCrudModel(OtherServices services,
+													ProductServices productservices,
+													CategoryServices categoryservices,
+                          SupplierServices supplierservices)
 		{
 			Services = services;
+			ProductServices = productservices;
+			CategoryServices = categoryservices;
+			SupplierServices = supplierservices;
 		}
 
 		public string SuccessMessage { get; set; }
@@ -31,16 +41,18 @@ namespace MyApp.Namespace
 		[BindProperty]
 		public int? SelectedCategoryId {get;set;}
 		[BindProperty]
-		public List<Product> SearchedProducts { get; set; }
+		public List<ProductList> SearchedProducts { get; set; }
 		[BindProperty]
-		public Product Product {get;set;} = new();
+		public ProductItem Product {get;set;} = new();
 		[BindProperty]
 		public string Discontinued {get;set;} 
 
 		[BindProperty]
-		public List<Category> SelectListOfCatagories {get;set;}
+		//public List<Category> SelectListOfCatagories {get;set;}
+		public List<SelectionList> SelectListOfCatagories {get;set;}
 		[BindProperty]
-		public List<Supplier> SelectListOfSuppliers {get;set;}
+		//public List<Supplier> SelectListOfSuppliers {get;set;}
+		public List<SelectionList> SelectListOfSuppliers {get;set;}
 		
 		public IActionResult OnGet()
 		{
@@ -77,7 +89,7 @@ namespace MyApp.Namespace
 					else
 						Product.Discontinued = false;
 					FormValidation();
-					Services.Edit(Product);
+					ProductServices.Edit(Product);
 					SuccessMessage = "Update Successful";
 				}
 				else if(ButtonPressed == "Add")
@@ -87,23 +99,23 @@ namespace MyApp.Namespace
 					else
 						Product.Discontinued = false;
 					FormValidation();
-					Services.Add(Product);
+					//Services.Add(Product);
 					SuccessMessage = "Add Successful";
 				}
 				else if(ButtonPressed == "Delete")
 				{
-					Services.Delete(Product);
-					Product = new Product();
+					//Services.Delete(Product);
+					Product = new ProductItem();
 					SuccessMessage = "Delete Successful";
 				}
 				else if(ButtonPressed == "Clear")
 				{
-					Product = new Product();
+					Product = new ProductItem();
 					SuccessMessage = "Clear Successful";
 				}
 				else if(Product.ProductId != 0)
 				{
-						Product = Services.Retrieve(Product.ProductId);
+						Product = ProductServices.Retrieve(Product.ProductId);
 						SuccessMessage = "Product Retrieve Successful";
 				}
 				else 
@@ -130,8 +142,8 @@ namespace MyApp.Namespace
 			try
 			{
 				Console.WriteLine("Querymodel: PopulateSelectLists");
-				SelectListOfCatagories = Services.ListCategories();
-				SelectListOfSuppliers = Services.ListSuppliers();
+				SelectListOfCatagories = CategoryServices.ListCategories();
+				SelectListOfSuppliers = SupplierServices.ListSuppliers();
 			}
 			catch (Exception ex)
 			{ 
@@ -145,9 +157,9 @@ namespace MyApp.Namespace
 			{
 				Console.WriteLine($"QueryCrudModel: GetProducts:filtertype= {filterType}");
 				if(filterType == "PartialString")
-					SearchedProducts = Services.FindProductsByPartialProductName(PartialProductName);
+					SearchedProducts = ProductServices.FindProductsByPartialName(PartialProductName);
 				else if(filterType == "DropDown")
-					SearchedProducts = Services.FindProductsByCategory(SelectedCategoryId);
+					SearchedProducts = ProductServices.FindProductsByCategory(SelectedCategoryId);
 			}
 			catch (Exception ex)
 			{ 
