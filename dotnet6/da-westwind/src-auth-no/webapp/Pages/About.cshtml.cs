@@ -9,6 +9,7 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 using Entities;
 using BLL;
 #nullable disable
+
 namespace MyApp.Namespace
 {
     public class AboutModel : PageModel
@@ -33,17 +34,17 @@ namespace MyApp.Namespace
             }
             catch (Exception ex)
             {
-                GetInnerException(ex);
+                ErrorMessage = GetInnerException(ex);
             }
             
         }
 
-        public void GetInnerException(Exception ex)
+        public string GetInnerException(Exception ex)
         {
             Exception rootCause = ex;
             while (rootCause.InnerException != null)
                 rootCause = rootCause.InnerException;
-            ErrorMessage = rootCause.Message;
+            return rootCause.Message;
         }
     }
 }

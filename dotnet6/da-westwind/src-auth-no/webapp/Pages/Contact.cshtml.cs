@@ -113,7 +113,7 @@ namespace MyApp.Namespace
             }
             catch (Exception e)
             { 
-                GetInnerException(e);
+                ErrorMessage = GetInnerException(e);
             }
         }
 
