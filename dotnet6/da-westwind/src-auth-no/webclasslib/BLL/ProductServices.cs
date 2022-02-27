@@ -97,6 +97,7 @@ namespace BLL
 		public int Add(ProductItem item)
 		{
 			Console.WriteLine($"ProductServices: Add; productId= {item.ProductId}");
+
 			var newProduct = new Product();
 			newProduct.ProductId = item.ProductId;
 			newProduct.ProductName = item.ProductName;
@@ -107,6 +108,7 @@ namespace BLL
 			newProduct.UnitPrice = item.UnitPrice;
 			newProduct.UnitsOnOrder = item.UnitsOnOrder;
 			newProduct.Discontinued = item.Discontinued;
+
 			Context.Products.Add(newProduct);
 			Context.SaveChanges();
 			return newProduct.ProductId;
@@ -115,9 +117,11 @@ namespace BLL
 		public void Edit(ProductItem item)
 		{
 				Console.WriteLine($"ProductServices: Edit; productId= {item.ProductId}");
+				//BLL Validation
 				Product existing = Context.Products.Find(item.ProductId);
 				if (existing == null)
 			 		throw new Exception("Product does not exist");
+
 				existing.ProductId = item.ProductId;
 				existing.ProductName = item.ProductName;
 				existing.SupplierId = item.SupplierId;
@@ -127,6 +131,7 @@ namespace BLL
 				existing.UnitPrice = item.UnitPrice;
 				existing.UnitsOnOrder = item.UnitsOnOrder;
 				existing.Discontinued = item.Discontinued;
+
 				EntityEntry<Product> updating = Context.Entry(existing);
 				updating.State = Microsoft.EntityFrameworkCore.EntityState.Modified;
 				Context.SaveChanges();
@@ -135,9 +140,25 @@ namespace BLL
 		public void Delete(ProductItem item)
 		{
 			Console.WriteLine($"ProductServices: Delete; productId= {item.ProductId}");
+			//BLL Validation
 			Product existing = Context.Products.Find(item.ProductId);
 				if (existing == null)
 			 		throw new Exception("Product does not exist");
+
+			List<OrderDetail> OrderDetailRecords = 
+				Context.OrderDetails.Where(x => 
+					x.ProductId == item.ProductId)
+				.ToList();
+			if(OrderDetailRecords.Count != 0)
+					throw new Exception("Cannot delete this Product as it is in the OrderDetails table");
+
+			List<ManifestItem> ManifestItemRecords = 
+				Context.ManifestItems.Where(x => 
+					x.ProductId == item.ProductId)
+				.ToList();
+			if(ManifestItemRecords.Count != 0)
+					throw new Exception("Cannot delete this Product as it is in the ManifestItems table");
+
 			EntityEntry<Product> removing = Context.Entry(existing);
 			removing.State = Microsoft.EntityFrameworkCore.EntityState.Deleted;
 			Context.SaveChanges();
