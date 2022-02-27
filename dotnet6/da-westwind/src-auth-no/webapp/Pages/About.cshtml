@@ -1,7 +1,9 @@
 ﻿@page
 @model MyApp.Namespace.AboutModel
 @{
+    ViewData["Title"] = "About";
 }
+
 <h5>About The Database Used for This Site</h5>
 
 @if(!string.IsNullOrEmpty(Model.ErrorMessage))
