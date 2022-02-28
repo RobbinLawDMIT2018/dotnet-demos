@@ -92,12 +92,12 @@ namespace BLL
 		}
 		#endregion
 
-		#region Add, Edit, Delete
+		#region Commands: Add, Edit, Delete
 
 		public int Add(ProductItem item)
 		{
 			Console.WriteLine($"ProductServices: Add; productId= {item.ProductId}");
-
+			//BLL Validation
 			var newProduct = new Product();
 			newProduct.ProductId = item.ProductId;
 			newProduct.ProductName = item.ProductName;

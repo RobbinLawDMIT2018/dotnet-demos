@@ -16,5 +16,10 @@ namespace Entities
         public int Build { get; set; }
         [Column(TypeName = "datetime")]
         public DateTime ReleaseDate { get; set; }
+
+        public override string ToString() 
+        {
+		    return $"Id: {Id}, Major: {Major}, Minor: {Minor}, Build: {Build}, Release Date: {ReleaseDate}";
+	    }
     }
 }
