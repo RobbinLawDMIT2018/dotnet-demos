@@ -146,7 +146,8 @@ namespace BLL
 			 		throw new Exception("Product does not exist");
 
 			List<OrderDetail> OrderDetailRecords = 
-				Context.OrderDetails.Where(x => 
+				Context.OrderDetails
+				.Where(x => 
 					x.ProductId == item.ProductId)
 				.ToList();
 			if(OrderDetailRecords.Count != 0)
