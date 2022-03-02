@@ -19,6 +19,8 @@ A simple run to reverse engineer an entire database would look like the followin
 dotnet ef dbcontext scaffold "Server=.;Database=WestWind;Trusted_Connection=true;" Microsoft.EntityFrameworkCore.SqlServer --no-build --verbose --context Context --context-dir DAL --output-dir Entities --data-annotations --namespace Entities --context-namespace DAL --force
 ```
 
+dotnet ef dbcontext scaffold "Server=.;Database=GroceryList;Trusted_Connection=true;" Microsoft.EntityFrameworkCore.SqlServer --no-build --verbose --context Context --context-dir DAL --output-dir Entities --data-annotations --namespace Entities --context-namespace DAL --force
+
 For the current state of the application where the focus is on the `Products`, `Suppliers`, and `Categories`, tables, the following is the complete command to generate the C# code for the DAL and Entity classes.
 
 ```shell
