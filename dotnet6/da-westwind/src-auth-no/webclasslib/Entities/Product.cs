@@ -22,15 +22,15 @@ namespace Entities
         [Key]
         [Column("ProductID")]
         public int ProductId { get; set; }
-        [Required]
-        [StringLength(40)]
+        [Required(ErrorMessage = "You must supply a product name")]
+        [StringLength(40, ErrorMessage = "Product Name must be only 40 chars")]
         public string ProductName { get; set; }
         [Column("SupplierID")]
         public int SupplierId { get; set; }
         [Column("CategoryID")]
         public int CategoryId { get; set; }
-        [Required]
-        [StringLength(20)]
+        [Required(ErrorMessage = "You must supply a quantity per unit")]
+        [StringLength(20, ErrorMessage = "Quantity Per Unit must be only 20 chars")]
         public string QuantityPerUnit { get; set; }
         public short? MinimumOrderQuantity { get; set; }
         [Column(TypeName = "money")]
