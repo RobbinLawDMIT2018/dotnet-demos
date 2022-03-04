@@ -98,6 +98,7 @@ namespace BLL
 		{
 			Console.WriteLine($"ProductServices: Add; productId= {item.ProductId}");
 			//BLL Validation
+			//for no product duplicates
 			var newProduct = new Product();
 			newProduct.ProductId = item.ProductId;
 			newProduct.ProductName = item.ProductName;
@@ -154,7 +155,8 @@ namespace BLL
 					throw new Exception("Cannot delete this Product as it is in the OrderDetails table");
 
 			List<ManifestItem> ManifestItemRecords = 
-				Context.ManifestItems.Where(x => 
+				Context.ManifestItems
+				.Where(x => 
 					x.ProductId == item.ProductId)
 				.ToList();
 			if(ManifestItemRecords.Count != 0)

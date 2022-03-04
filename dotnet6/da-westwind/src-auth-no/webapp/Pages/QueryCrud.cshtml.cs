@@ -169,24 +169,24 @@ namespace MyApp.Namespace
 
 		public void FormValidation()
 		{
-			// if(string.IsNullOrEmpty(Product.ProductName))
-			// 	Errors.Add(new Exception("ProductName"));
-			// if(Product.SupplierId == 0)
-			// 	Errors.Add(new Exception("SupplierId"));
-			// if(Product.CategoryId == 0)
-			// 	Errors.Add(new Exception("CategoryId"));
-			// if(string.IsNullOrEmpty(Product.QuantityPerUnit))
-			// 	Errors.Add(new Exception("QuantityPerUnit"));
+			if(string.IsNullOrEmpty(Product.ProductName))
+				Errors.Add(new Exception("ProductName"));
+			if(Product.SupplierId == 0)
+				Errors.Add(new Exception("SupplierId"));
+			if(Product.CategoryId == 0)
+				Errors.Add(new Exception("CategoryId"));
+			if(string.IsNullOrEmpty(Product.QuantityPerUnit))
+				Errors.Add(new Exception("QuantityPerUnit"));
 
-			// if(Product.UnitPrice < 0)
-			// 	Errors.Add(new Exception("UnitPrice < 0"));
-			// if(Product.UnitsOnOrder < 0)
-			// 	Errors.Add(new Exception("UnitsOnOrder < 0"));
+			if(Product.UnitPrice < 0)
+				Errors.Add(new Exception("UnitPrice < 0"));
+			if(Product.UnitsOnOrder < 0)
+				Errors.Add(new Exception("UnitsOnOrder < 0"));
 
-			// if(Product.ProductName.Length > 40)
-			// 	Errors.Add(new Exception("ProductName > 40"));
-			// if(Product.QuantityPerUnit.Length > 20)
-			// 	Errors.Add(new Exception("QuantityPerUnit > 20"));
+			if(Product.ProductName.Length > 40)
+				Errors.Add(new Exception("ProductName > 40"));
+			if(Product.QuantityPerUnit.Length > 20)
+				Errors.Add(new Exception("QuantityPerUnit > 20"));
 			
 			if (Errors.Count() > 0)
 					throw new AggregateException("Invalid Data: ", Errors);
