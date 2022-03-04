@@ -178,10 +178,10 @@ namespace MyApp.Namespace
 			// if(string.IsNullOrEmpty(Product.QuantityPerUnit))
 			// 	Errors.Add(new Exception("QuantityPerUnit"));
 
-			if(Product.UnitPrice < 0)
-				Errors.Add(new Exception("UnitPrice < 0"));
-			if(Product.UnitsOnOrder < 0)
-				Errors.Add(new Exception("UnitsOnOrder < 0"));
+			// if(Product.UnitPrice < 0)
+			// 	Errors.Add(new Exception("UnitPrice < 0"));
+			// if(Product.UnitsOnOrder < 0)
+			// 	Errors.Add(new Exception("UnitsOnOrder < 0"));
 
 			// if(Product.ProductName.Length > 40)
 			// 	Errors.Add(new Exception("ProductName > 40"));
