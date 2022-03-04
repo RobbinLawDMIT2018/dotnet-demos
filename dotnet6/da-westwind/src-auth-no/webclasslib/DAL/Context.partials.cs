@@ -16,11 +16,10 @@ namespace DAL
 						   where e.State == EntityState.Added
 							   || e.State == EntityState.Modified
 						   select e.Entity;
-			var errors = new List<ValidationResult>(); // all errors are here
+			var errors = new List<ValidationResult>();
 			foreach (var entity in entities)
 			{
 				var validationContext = new ValidationContext(entity);
-				// Validator.ValidateObject(entity, validationContext);
 				Validator.TryValidateObject(entity, validationContext, errors, validateAllProperties: true);
 			}
 			if(errors.Any())
@@ -29,7 +28,6 @@ namespace DAL
 					Console.WriteLine("VALIDATION FAILED: " + result.ToString());
 					throw new Exception(result.ToString());
 				}
-				//throw new AggregateException("Invalid Data: ", errors);
 			}
 			return base.SaveChanges();
 			
