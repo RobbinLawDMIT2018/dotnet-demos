@@ -97,8 +97,18 @@ namespace BLL
 		public int Add(ProductItem item)
 		{
 			Console.WriteLine($"ProductServices: Add; productId= {item.ProductId}");
+
 			//BLL Validation
 			//for no product duplicates
+			var exists = 
+				Context.Products.FirstOrDefault(x => 
+				x.ProductName == item.ProductName && 
+				x.SupplierId == item.SupplierId &&
+				x.CategoryId == item.CategoryId &&  
+				x.QuantityPerUnit == item.QuantityPerUnit);
+			if (exists != null)
+				throw new Exception("A product with the same name, supplier, category, and quantity per unit already exists");
+
 			var newProduct = new Product();
 			newProduct.ProductId = item.ProductId;
 			newProduct.ProductName = item.ProductName;
@@ -118,11 +128,23 @@ namespace BLL
 		public void Edit(ProductItem item)
 		{
 				Console.WriteLine($"ProductServices: Edit; productId= {item.ProductId}");
+
 				//BLL Validation
 				Product existing = Context.Products.Find(item.ProductId);
-				if (existing == null)
-			 		throw new Exception("Product does not exist");
+					if (existing == null)
+						throw new Exception("Product does not exist");
 
+				//BLL Validation
+				//for no product duplicates
+				var exists = 
+					Context.Products.FirstOrDefault(x => 
+					x.ProductName == item.ProductName && 
+					x.SupplierId == item.SupplierId &&
+					x.CategoryId == item.CategoryId &&  
+					x.QuantityPerUnit == item.QuantityPerUnit);
+				if (exists != null)
+					throw new Exception("A product with the same name, supplier, category, and quantity per unit already exists");
+					
 				existing.ProductId = item.ProductId;
 				existing.ProductName = item.ProductName;
 				existing.SupplierId = item.SupplierId;
@@ -141,11 +163,14 @@ namespace BLL
 		public void Delete(ProductItem item)
 		{
 			Console.WriteLine($"ProductServices: Delete; productId= {item.ProductId}");
+
 			//BLL Validation
 			Product existing = Context.Products.Find(item.ProductId);
 				if (existing == null)
 			 		throw new Exception("Product does not exist");
 
+			//BLL Validation
+			//cannot delete product if it is in the OderDetail table
 			List<OrderDetail> OrderDetailRecords = 
 				Context.OrderDetails
 				.Where(x => 
@@ -154,6 +179,8 @@ namespace BLL
 			if(OrderDetailRecords.Count != 0)
 					throw new Exception("Cannot delete this Product as it is in the OrderDetails table");
 
+			//BLL Validation
+			//cannot delete product if it is in the ManifestItem table
 			List<ManifestItem> ManifestItemRecords = 
 				Context.ManifestItems
 				.Where(x => 
