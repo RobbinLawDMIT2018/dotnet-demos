@@ -183,6 +183,9 @@ namespace MyApp.Namespace
 			if(Product.UnitsOnOrder < 0)
 				Errors.Add(new Exception("UnitsOnOrder < 0"));
 
+			if (Errors.Count() > 0)
+					throw new AggregateException("Invalid Data: ", Errors);
+
 			if(Product.ProductName.Length > 40)
 				Errors.Add(new Exception("ProductName > 40"));
 			if(Product.QuantityPerUnit.Length > 20)
