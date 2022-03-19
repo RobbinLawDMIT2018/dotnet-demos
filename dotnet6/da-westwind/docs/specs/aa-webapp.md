@@ -20,7 +20,7 @@ dotnet new webapp -n webapp -o webapp -au Individual
 #Create a solution to use with Visual Studio 2022
 dotnet new sln -n solution
 # Add the project to the solution
-dotnet sln "solution.sln" add webapp\webapp.csproj
+dotnet sln "solution.sln" add ./webapp/webapp.csproj
 ```
 
 To ensure that your web application works, build and run your project.
