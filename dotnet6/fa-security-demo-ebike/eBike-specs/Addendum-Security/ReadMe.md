@@ -234,13 +234,13 @@ Finally, you can apply authorization requirements to your subsystem folders by m
 ```csharp
 builder.services.AddRazorPages(options =>
 {
-    options.Conventions.AuthorizeFolder("/Purchasing/ManagePurchasing")
+    options.Conventions.AuthorizeFolder("/Purchasing")
         .AllowAnonymousToPage("/Purchasing/Index");
-    options.Conventions.AuthorizeFolder("/Receiving/ManageReceiving")
+    options.Conventions.AuthorizeFolder("/Receiving")
         .AllowAnonymousToPage("/Receiving/Index");
-    options.Conventions.AuthorizeFolder("/Sales/ManageSales")
+    options.Conventions.AuthorizeFolder("/Sales")
         .AllowAnonymousToPage("/Sales/Index");
-    options.Conventions.AuthorizeFolder("/Servicing/ManageServicing")
+    options.Conventions.AuthorizeFolder("/Servicing")
         .AllowAnonymousToPage("/Servicing/Index");
 });
 ```
