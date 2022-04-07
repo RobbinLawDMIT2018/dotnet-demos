@@ -1,0 +1,20 @@
+﻿@page
+@model webapp.Pages.ManageSales.ManageSalesModel
+@{
+    ViewData["Title"] = "Manage Sales";
+}
+
+<div class="text-center">
+    <h1 class="display-4">Manage Sales</h1>
+    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+</div>
+
+@if(!string.IsNullOrEmpty(Model.ErrorMessage))
+	{
+		<p class="error-message">@Model.ErrorMessage</p>
+	}
+
+	@if(!string.IsNullOrEmpty(Model.SuccessMessage))
+	{
+		<p class="success-message">@Model.SuccessMessage</p>
+	}
