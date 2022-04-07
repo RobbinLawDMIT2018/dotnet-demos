@@ -17,7 +17,7 @@ builder.Services.AddDbContext<ApplicationDbContext>(options =>
     options.UseSqlServer(connectionString));
 builder.Services.AddDatabaseDeveloperPageExceptionFilter();
 
-builder.Services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
+builder.Services.AddDefaultIdentity<ApplicationUser>(options => options.SignIn.RequireConfirmedAccount = true)
     .AddEntityFrameworkStores<ApplicationDbContext>();
 builder.Services.AddRazorPages();
 
@@ -59,4 +59,50 @@ app.UseAuthorization();
 
 app.MapRazorPages();
 
+
+await ApplicationUserSeeding(app);
 app.Run();
+
+static async Task ApplicationUserSeeding(IHost host)
+{
+    using (var scope = host.Services.CreateScope())
+    {
+        var services = scope.ServiceProvider;
+        var loggerFactory = services.GetRequiredService<ILoggerFactory>();
+        var logger = loggerFactory.CreateLogger<Program>();
+        var env = services.GetRequiredService<IWebHostEnvironment>();
+        if (env is not null && env.IsDevelopment())
+        {
+            try
+            {
+                var configuration = services.GetRequiredService<IConfiguration>();
+                var userManager = services.GetRequiredService<UserManager<ApplicationUser>>();
+                if (!userManager.Users.Any())
+                {
+                    var securityService = services.GetRequiredService<SecurityService>();
+                    var users = securityService.ListEmployees();
+                    string password = configuration.GetValue<string>("Setup:InitialPassword");
+                    foreach (var person in users)
+                    {
+                        var user = new ApplicationUser
+                        {
+                            UserName = person.UserName, 
+                            Email = person.Email,
+                            EmployeeId = person.EmployeeId,
+                            EmailConfirmed = true
+                        };
+                        var result = await userManager.CreateAsync(user, password);
+                        if (!result.Succeeded)
+                        {
+                            logger.LogInformation("User was not created");
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                logger.LogWarning(ex, "An error occurred seeing the website users");
+            }
+        }
+    }
+}

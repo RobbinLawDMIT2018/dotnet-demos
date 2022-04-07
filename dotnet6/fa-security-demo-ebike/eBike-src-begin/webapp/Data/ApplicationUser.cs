@@ -1,10 +1,10 @@
 ﻿#region Additional Namespaces
-using AppSecurity.Models;
+using Security;
 using Microsoft.AspNetCore.Identity;
 #endregion
 
 
-namespace WebApp.Data
+namespace webapp.Data
 {
     public class ApplicationUser : IdentityUser, IIdentifyEmployee
     {

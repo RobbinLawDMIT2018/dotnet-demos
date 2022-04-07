@@ -11,10 +11,10 @@ namespace Security
 		public static void AddSecurityDependencies(this IServiceCollection services, Action<DbContextOptionsBuilder> options)
 		{
 			services.AddDbContext<Context>(options);
-			services.AddTransient<Services>((serviceProvider) =>
+			services.AddTransient<SecurityService>((serviceProvider) =>
 			{
 				var context = serviceProvider.GetRequiredService<Context>();
-				return new Services(context);
+				return new SecurityService(context);
 			});
 		}
 	}

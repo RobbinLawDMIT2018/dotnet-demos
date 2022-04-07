@@ -8,11 +8,11 @@ using Security;
 
 namespace Security
 {
-	public class Services
+	public class SecurityService
 	{
 		private readonly Context Context;
 
-		public Services(Context context)
+		public SecurityService(Context context)
 		{
 			if (context == null)
 				throw new ArgumentNullException();

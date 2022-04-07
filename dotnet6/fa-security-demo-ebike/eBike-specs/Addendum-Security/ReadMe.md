@@ -6,9 +6,10 @@
 
 ## Step 1 - Project Setup
 
-Create a new **class library** project called "AppSecurity". In it, reverse engineer a single table from the database: `Employees`.
+Create a new **class library** project called "Security". In it, reverse engineer a single table from the database: `Employees`.
 
-Define an interface that will represent a common set of properties represented by the database's `Employees` and the desired users for our website.
+Create a folder in the "Security" project called ViewModels and in it create a .cs file.
+In this file define an interface that will represent a common set of properties represented by the database's `Employees` and the desired users for our website.
 
 ```csharp
 public interface IIdentifyEmployee
@@ -19,7 +20,7 @@ public interface IIdentifyEmployee
 }
 ```
 
-Then create a query model of the staff member.
+In the ViewModels folder create another .cs file. In this file create a query model of the staff member.
 
 ```csharp
 public class StaffMember : IIdentifyEmployee
@@ -37,7 +38,7 @@ public class SecurityService
 {
     private readonly AppSecurityDbContext _context;
 
-    internal SecurityService(AppSecurityDbContext context)
+    public SecurityService(AppSecurityDbContext context)
     {
         _context = context;
     }
@@ -76,9 +77,12 @@ We want to support a connection between our built-in employees in the eBikes dat
 Under the *Data/* folder, add the following class. This will represent the customized user type for login accounts. Note how this class also implements the `IIdentifyEmployee` interface from our class library above.
 
 ```csharp
-public class ApplicationUser : IdentityUser, IIdentifyEmployee
+namespace webapp.Data
 {
-    public int? EmployeeId { get; set; }
+    public class ApplicationUser : IdentityUser, IIdentifyEmployee
+    {
+        public int? EmployeeId { get; set; }
+    }
 }
 ```
 
@@ -98,14 +102,15 @@ Modify the `_LoginPartial.cshtml` shared file to replace the `IdentityUser` with
 
 ```razor
 @using Microsoft.AspNetCore.Identity
+@using webapp.Data
 @inject SignInManager<ApplicationUser> SignInManager
 @inject UserManager<ApplicationUser> UserManager
 ```
 
-Make a similar change from `IdentityUser` to `ApplicationUser` in the `ConfigureServices()` method of the `Startup.cs` file.
+Make a similar change from `IdentityUser` to `ApplicationUser` in the `Program.cs` file.
 
 ```csharp
-services.AddDefaultIdentity<ApplicationUser>(options => options.SignIn.RequireConfirmedAccount = true)
+builder.Services.AddDefaultIdentity<ApplicationUser>(options => options.SignIn.RequireConfirmedAccount = true)
     .AddEntityFrameworkStores<ApplicationDbContext>();
 ```
 
@@ -117,7 +122,7 @@ Replace the last line of the `Program.cs` file (the one that has `app.Run()`) wi
 await ApplicationUserSeeding(app);
 app.Run();
 
-private static async Task ApplicationUserSeeding(IHost host)
+static async Task ApplicationUserSeeding(IHost host)
 {
     using (var scope = host.Services.CreateScope())
     {
@@ -229,13 +234,13 @@ Finally, you can apply authorization requirements to your subsystem folders by m
 ```csharp
 builder.services.AddRazorPages(options =>
 {
-    options.Conventions.AuthorizeFolder("/Purchasing")
+    options.Conventions.AuthorizeFolder("/Purchasing/ManagePurchasing")
         .AllowAnonymousToPage("/Purchasing/Index");
-    options.Conventions.AuthorizeFolder("/Receiving")
+    options.Conventions.AuthorizeFolder("/Receiving/ManageReceiving")
         .AllowAnonymousToPage("/Receiving/Index");
-    options.Conventions.AuthorizeFolder("/Sales")
+    options.Conventions.AuthorizeFolder("/Sales/ManageSales")
         .AllowAnonymousToPage("/Sales/Index");
-    options.Conventions.AuthorizeFolder("/Servicing")
+    options.Conventions.AuthorizeFolder("/Servicing/ManageServicing")
         .AllowAnonymousToPage("/Servicing/Index");
 });
 ```
