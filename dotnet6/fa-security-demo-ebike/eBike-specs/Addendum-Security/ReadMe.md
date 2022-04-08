@@ -232,7 +232,7 @@ Now you can test the login with an actual user to see if everything is working w
 Finally, you can apply authorization requirements to your subsystem folders by modifying the line that adds Razor Pages services in the `Program.cs` file. Replace the line `builder.Services.AddRazorPages();` with the following to specify authorization for each subsystem's folders. Adjust as necessary for whichever subsystems are being used in your project.
 
 ```csharp
-builder.services.AddRazorPages(options =>
+builder.Services.AddRazorPages(options =>
 {
     options.Conventions.AuthorizeFolder("/Purchasing")
         .AllowAnonymousToPage("/Purchasing/Index");
