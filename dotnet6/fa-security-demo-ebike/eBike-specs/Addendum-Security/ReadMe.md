@@ -36,16 +36,16 @@ Define a service to provide security information for your application.
 ```csharp
 public class SecurityService
 {
-    private readonly AppSecurityDbContext _context;
+    private readonly AppSecurityDbContext Context;
 
     public SecurityService(AppSecurityDbContext context)
     {
-        _context = context;
+        Context = context;
     }
 
     public List<IIdentifyEmployee> ListEmployees()
     {
-        var people = from emp in _context.Employees
+        var people = from emp in Context.Employees
                         select new StaffMember
                         {
                             EmployeeId = emp.EmployeeId,
@@ -60,7 +60,7 @@ public class SecurityService
     public string GetEmployeeName(int employeeId)
     {
         string result = "";
-        var found = _context.Employees.Find(employeeId);
+        var found = Context.Employees.Find(employeeId);
         if (found != null)
             result = $"{found.FirstName} {found.LastName}";
         return result;

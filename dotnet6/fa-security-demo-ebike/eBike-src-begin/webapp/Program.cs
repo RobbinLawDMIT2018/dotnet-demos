@@ -20,19 +20,19 @@ builder.Services.AddDatabaseDeveloperPageExceptionFilter();
 builder.Services.AddDefaultIdentity<ApplicationUser>(options => options.SignIn.RequireConfirmedAccount = true)
     .AddEntityFrameworkStores<ApplicationDbContext>();
 
-builder.Services.AddRazorPages();
+//builder.Services.AddRazorPages();
 
-// builder.Services.AddRazorPages(options =>
-// {
-//     options.Conventions.AuthorizeFolder("/Purchasing")
-//         .AllowAnonymousToPage("/Purchasing/Index");
-//     options.Conventions.AuthorizeFolder("/Receiving")
-//         .AllowAnonymousToPage("/Receiving/Index");
-//     options.Conventions.AuthorizeFolder("/Sales")
-//         .AllowAnonymousToPage("/Sales/Index");
-//     options.Conventions.AuthorizeFolder("/Servicing")
-//         .AllowAnonymousToPage("/Servicing/Index");
-// });
+builder.Services.AddRazorPages(options =>
+{
+    options.Conventions.AuthorizeFolder("/Purchasing")
+        .AllowAnonymousToPage("/Purchasing/Index");
+    options.Conventions.AuthorizeFolder("/Receiving")
+        .AllowAnonymousToPage("/Receiving/Index");
+    options.Conventions.AuthorizeFolder("/Sales")
+        .AllowAnonymousToPage("/Sales/Index");
+    options.Conventions.AuthorizeFolder("/Servicing")
+        .AllowAnonymousToPage("/Servicing/Index");
+});
 
 // Call the Backend Startup Extension to register services
 builder.Services.AddAboutDependencies(options =>
