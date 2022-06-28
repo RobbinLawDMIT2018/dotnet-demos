@@ -60,31 +60,39 @@ Setup of Development Environment.
 
 ## Day02
 
+Linq
+
 
 [Back to Top](#calendar)
 
 ## Day03
 
+Linq
 
 [Back to Top](#calendar)
 
 ## Day04
 
+Linq
 
 [Back to Top](#calendar)
 
 ## Day05
 
+Linq
 
 [Back to Top](#calendar)
 
 ## Day06
 
+Linq
 
 [Back to Top](#calendar)
 
 ## Day07
 
+Linq
+- Work Period
 
 [Back to Top](#calendar)
 
@@ -104,41 +112,52 @@ Linq-InClass01(10%)
 
 ## Day10
 
+Query-Crud
 
 [Back to Top](#calendar)
 
 ## Day11
 
+Query-Crud
 
 [Back to Top](#calendar)
 
 ## Day12
 
+Query-Crud
 
 [Back to Top](#calendar)
 
 ## Day13
 
+Query-Crud
 
 [Back to Top](#calendar)
 
 ## Day14
 
+Query-Crud
 
 [Back to Top](#calendar)
 
 ## Day15
 
+Query-Crud
+- Work Period
 
 [Back to Top](#calendar)
 
 ## Day16
 
+Query-Crud
+- Work Period
 
 [Back to Top](#calendar)
 
 ## Day17
 
+Query-Crud
+- Work Period
 
 [Back to Top](#calendar)
 
@@ -158,46 +177,58 @@ Query-Crud-InClass02(10%)
 
 ## Day20
 
+OLTP
 
 [Back to Top](#calendar)
 
 ## Day21
 
+OLTP
 
 [Back to Top](#calendar)
 
 ## Day22
 
+OLTP
 
 [Back to Top](#calendar)
 
 ## Day23
 
+OLTP
 
 [Back to Top](#calendar)
 
 ## Day24
 
+OLTP
 
 [Back to Top](#calendar)
 
 ## Day25
 
+OLTP
 
 [Back to Top](#calendar)
 
 ## Day26
 
+OLTP
+- Work Period
 
 [Back to Top](#calendar)
 
 ## Day27
 
+OLTP
+- Work Period
 
 [Back to Top](#calendar)
 
 ## Day28
 
+OLTP
+- Work Period
 
 [Back to Top](#calendar)
 
@@ -217,26 +248,31 @@ OLTP-InClass03(10%)
 
 ## Day31
 
+Project
 
 [Back to Top](#calendar)
 
 ## Day32
 
+Project
 
 [Back to Top](#calendar)
 
 ## Day33
 
+Project
 
 [Back to Top](#calendar)
 
 ## Day34
 
+Project
 
 [Back to Top](#calendar)
 
 ## Day35
 
+Project
 
 [Back to Top](#calendar)
 
@@ -249,26 +285,37 @@ Project-Design(10%)
 
 ## Day37
 
+Project
+- Work Period
 
 [Back to Top](#calendar)
 
 ## Day38
 
+Project
+- Work Period
 
 [Back to Top](#calendar)
 
 ## Day39
 
+Project
+- Work Period
 
 [Back to Top](#calendar)
 
 ## Day40
 
+Project
+- Work Period
 
 [Back to Top](#calendar)
 
-## Day41 
+## Day41
 
+Project
+- Work Period
+  
 Project-Imp(40%)
 
 
