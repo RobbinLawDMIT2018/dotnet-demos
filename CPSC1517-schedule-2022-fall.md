@@ -2,30 +2,30 @@
 
 ## Exercises
 
-|Num|Description|Due Date|
-|:-:|:-:|:-:|
-|1|||
-|2|||
-|3|||
-|4|||
-|5|||
-|6|||
+|Num|Description|Weight|Due Date|
+|:-:|:-:|:-:|:-:|
+|1||||
+|2||||
+|3||||
+|4||||
+|5||||
+|6||||
 
 ## Labs
 
-|Num|Description|Due Date|
-|:-:|:-:|:-:|
-|1|||
-|2|||
-|3|||
+|Num|Description|Weight|Due Date|
+|:-:|:-:|:-:|:-:|
+|1||||
+|2||||
+|3||||
 
 ## Project
 
-|Deliverable|Description|Due Date|
-|:-:|:-:|:-:|
-|1|||
-|2|||
-|3|||
+|Deliverable|Description|Weight|Due Date|
+|:-:|:-:|:-:|:-:|
+|1||||
+|2||||
+|3||||
 
 ## Calendar
 
