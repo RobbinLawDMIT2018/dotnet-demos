@@ -2,25 +2,25 @@
 
 ## Calendar
 
-## DMIT2018 A01
+## CPSC1517 A02
 
 |Week|Mon|Tue|Wed|Thu|Fri|
 |:-:|:-:|:-:|:-:|:-:|:-:|
-|0||||Sep01|Sep02-[Day01](#day01)-Intro|
-|1|Sep05|Sep06-[Day02](#day02)-Linq|Sep07|Sep08|Sep09-[Day03](#day03)-Linq|
-|2|Sep12-[Day04](#day04)-Linq|Sep13-[Day05](#day05)-Linq|Sep14|Sep15|Sep16-[Day06](#day06)-Linq|
-|3|Sep19-[Day07](#day07)-Linq|Sep20-[Day08](#day08)-Linq-Ex01(10%)|Sep21|Sep22|Sep23-[Day09](#day09)-Linq-InClass01(10%)|
-|4|Sep26-[Day10](#day10)-Query-Crud|Sep27-[Day11](#day11)-Query-Crud|Sep28|Sep29|Sep30-[Day12](#day12)-Query-Crud|
-|5|Oct03-[Day13](#day13)-Query-Crud|Oct04-[Day14](#day14)-Query-Crud|Oct05|Oct06|Oct07-[Day15](#day15)-Query-Crud|
-|6|Oct10|Oct11|Oct12|Oct13|Oct14-[Day16](#day16)-Query-Crud|
-|7|Oct17-[Day17](#day17)-Query-Crud|Oct18-[Day18](#day18)-Query-Crud-Ex02(10%)|Oct19|Oct20|Oct21-[Day19](#day19)-Query-Crud-InClass02(10%)|
-|8|Oct24-[Day20](#day20)-OLTP|Oct25-[Day21](#day21)-OLTP|Oct26|Oct27|Oct28-[Day22](#day22)-OLTP|
-|9|Oct31-[Day23](#day23)-OLTP|Nov01-[Day24](#day24)-OLTP|Nov02|Nov03|Nov04-[Day25](#day25)-OLTP|
+|0||||Sep01-[Day01](#day01)-Intro|Sep02|
+|1|Sep05|Sep06-[Day02](#day02)-Setup|Sep07|Sep08-[Day03](#day03)-OOP|Sep09|
+|2|Sep12-[Day04](#day04)-OOP|Sep13-[Day05](#day05)-OOP|Sep14|Sep15-[Day06](#day06)-OOP|Sep16|
+|3|Sep19-[Day07](#day07)-OOP|Sep20-[Day08](#day08)-OOP|Sep21|Sep22-[Day09](#day09)-OOP-InClass|Sep23|
+|4|Sep26-[Day10](#day10)-FileIO|Sep27-[Day11](#day11)-FileIO|Sep28|Sep29-[Day12](#day12)-FileIO|Sep30|
+|5|Oct03-[Day13](#day13)-FileIO|Oct04-[Day14](#day14)-FileIO|Oct05|Oct06-[Day15](#day15)-FileIO|Oct07|
+|6|Oct10|Oct11|Oct12|Oct13-[Day16](#day16)-FileIO-InClass|Oct14|
+|7|Oct17-[Day17](#day17)-Query-Crud|Oct18-[Day18](#day18)-Query-Crud-Ex02(10%)|Oct19|Oct20-[Day19](#day19)-Query-Crud-InClass02(10%)|Oct21|
+|8|Oct24-[Day20](#day20)-OLTP|Oct25-[Day21](#day21)-OLTP|Oct26|Oct27-[Day22](#day22)-OLTP|Oct28|
+|9|Oct31-[Day23](#day23)-OLTP|Nov01-[Day24](#day24)-OLTP|Nov02|Nov03-[Day25](#day25)-OLTP|Nov04|
 |10|Nov07-[Day26](#day26)-OLTP|Nov08-[Day27](#day27)-OLTP|Nov09|Nov10|Nov11|
-|11|Nov14-[Day28](#day28)-OLTP|Nov15-[Day29](#day29)-OLTP-Ex03(10%)|Nov16|Nov17|Nov18-[Day30](#day30)-OLTP-InClass03(10%)|
-|12|Nov21-[Day31](#day31)-Project|Nov22-[Day32](#day32)-Project|Nov23|Nov24|Nov25-[Day33](#day33)-Project|
-|13|Nov28-[Day34](#day34)-Project|Nov29-[Day35](#day35)-Project|Nov30|Dec01|Dec02-[Day36](#day36)-Project-Design(10%)|
-|14|Dec05-[Day37](#day37)-Project|Dec06-[Day38](#day38)-Project|Dec07|Dec08|Dec09-[Day39](#day39)-Project|
+|11|Nov14-[Day28](#day28)-OLTP|Nov15-[Day29](#day29)-OLTP-Ex03(10%)|Nov16|Nov17-[Day30](#day30)-OLTP-InClass03(10%)|Nov18|
+|12|Nov21-[Day31](#day31)-Project|Nov22-[Day32](#day32)-Project|Nov23|Nov24-[Day33](#day33)-Project|Nov25|
+|13|Nov28-[Day34](#day34)-Project|Nov29-[Day35](#day35)-Project|Nov30|Dec01-[Day36](#day36)-Project-Design(10%)|Dec02|
+|14|Dec05-[Day37](#day37)-Project|Dec06-[Day38](#day38)-Project|Dec07|Dec08-[Day39](#day39)-Project|Dec09|
 |15|Dec12-[Day40](#day40)-Project|Dec13-[Day41](#day41)-Project-Imp(40%)|Dec14|Dec15||
 
 ## DMIT2018 A02
