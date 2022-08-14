@@ -9,7 +9,7 @@
 |3|FrontEnd Web App with Razor Pages|5|11:59 PM [Day21](#day21)|
 |4|BackEnd Web App with Entity Framework and SQL Server|5|11:59 PM [Day26](#day26)|
 |5|Query with LINQ and CQRS|5|11:59 PM [Day29](#day29)|
-|6|Crud with Commands and CQRS|5|11:59 PM [Day32](#day32)|
+|6|Crud with Entity Framework Commands and CQRS|5|11:59 PM [Day32](#day32)|
 ||Total|30||
 
 ## Labs to be submitted via GitHub
