@@ -1,42 +1,20 @@
 # CPSC 1517 A02 Fall 2022
 
-## Exercises to be submitted via GitHub
+## Assessments
 
-|Num|Description|Weight|Due Date|
+|Assessment Name|Description|Weight|Due Date|
 |:-:|:-:|:-:|:-:|
-|1|Console App Engine/RollingStock/Train Classes with Program to test|5|11:59 PM [Day07](#day07)|
-|2|Console App File IO (csv & json) with Parse/TryParse and Program to test|5|11:59 PM [Day14](#day14)|
-|3|FrontEnd Web App with Razor Pages|5|11:59 PM [Day21](#day21)|
-|4|BackEnd Web App with Entity Framework and SQL Server|5|11:59 PM [Day26](#day26)|
-|5|Query with LINQ and CQRS|5|11:59 PM [Day29](#day29)|
-|6|Crud with Entity Framework Commands and CQRS|5|11:59 PM [Day32](#day32)|
-||Total|30||
-
-## Labs to be submitted via GitHub
-
-|Num|Description|Weight|Due Date|
-|:-:|:-:|:-:|:-:|
-|1|OOP|6|11:59 PM [Day09](#day09)|
-|2|File IO|6|11:59 PM [Day16](#day16)|
-|3|Query/CRUD|8|11:59 PM [Day34](#day34)|
-||Total|20||
-
-## Quizzes (multiple choice) to be submitted via Moodle
-
-|Num|Description|Weight|Due Date|
-|:-:|:-:|:-:|:-:|
-|1|OOP/File IO|10|11:59 PM [Day16](#day16)|
-|2|Query/CRUD|10|11:59 PM [Day34](#day34)|
-||Total|20||
-
-## Project to be submitted via GitHub
-
-|Deliverable|Description|Weight|Due Date|
-|:-:|:-:|:-:|:-:|
-|1|Project Planning|5|4:59 PM [Day42](#day42)|
-|2|Project Setup|5|4:59 PM [Day42](#day42)|
-|3|Project Implementation|20|4:59 PM [Day42](#day42)|
-||Total|30||
+|Exercises-1|OOP & File IO Multiple Choice Quiz on Moodle|10|11:59 PM [Day09](#day09)|
+|Exercises-2|Query/Crud Multiple Choice Quiz on Moodle|10|11:59 PM [Day16](#day16)|
+|InClass-1 OOP Foundations||10|11:59 PM [Day09](#day09)|
+|InClass-2 OOP and Database||15|11:59 PM [Day16](#day16)|
+|InClass-3 Website Forms||10|11:59 PM [Day27](#day27)|
+|InClass-4 CRUD and Client-Server||10|11:59 PM [Day33](#day33)|
+|Project-Deliverable-A Planning||5|11:59 PM [Day42](#day42)|
+|Project-Deliverable-B Setup||5|11:59 PM [Day42](#day42)|
+|Project-Deliverable-C Data Query||10|11:59 PM [Day42](#day42)|
+|Project-Deliverable-D Crud Maintenance||15|11:59 PM [Day42](#day42)|
+||Total|100||
 
 ## Calendar
 
@@ -45,17 +23,17 @@
 |0||||Sep01-[Day01](#day01)-Intro|Sep02|
 |1|Sep05|Sep06-[Day02](#day02)-OOP|Sep07|Sep08-[Day03](#day03)-OOP|Sep09|
 |2|Sep12-[Day04](#day04)-OOP|Sep13-[Day05](#day05)-OOP|Sep14|Sep15-[Day06](#day06)-OOP|Sep16|
-|3|<span style="color:red">Sep19</span>-[Day07](#day07)-OOP|Sep20-[Day08](#day08)-OOP|Sep21|<span style="color:red">Sep22</span>-[Day09](#day09)-OOP|Sep23|
+|3|Sep19-[Day07](#day07)-OOP|Sep20-[Day08](#day08)-OOP|Sep21|<span style="color:red">Sep22</span>-[Day09](#day09)-OOP|Sep23|
 |4|Sep26-[Day10](#day10)-FileIO|Sep27-[Day11](#day11)-FileIO|Sep28|Sep29-[Day12](#day12)-FileIO|Sep30|
-|5|Oct03-[Day13](#day13)-FileIO|<span style="color:red">Oct04</span>-[Day14](#day14)-FileIO|Oct05|Oct06-[Day15](#day15)-FileIO|Oct07|
-|6|Oct10|Oct11|Oct12|<span style="color:red">Sep19</span>Oct13-[Day16](#day16)-FileIO|Oct14|
+|5|Oct03-[Day13](#day13)-FileIO|Oct04-[Day14](#day14)-FileIO|Oct05|Oct06-[Day15](#day15)-FileIO|Oct07|
+|6|Oct10|Oct11|Oct12|<span style="color:red">Oct13</span>Oct13-[Day16](#day16)-FileIO|Oct14|
 |7|Oct17-[Day17](#day17)-FrontEnd|Oct18-[Day18](#day18)-FrontEnd|Oct19|Oct20-[Day19](#day19)-FrontEnd|Oct21|
-|8|Oct24-[Day20](#day20)-FrontEnd|<span style="color:red">Oct25</span>-[Day21](#day21)-FrontEnd|Oct26|Oct27-[Day22](#day22)-BackEnd|Oct28|
+|8|Oct24-[Day20](#day20)-FrontEnd|Oct25-[Day21](#day21)-BackEnd|Oct26|Oct27-[Day22](#day22)-BackEnd|Oct28|
 |9|Oct31-[Day23](#day23)-BackEnd|Nov01-[Day24](#day24)-BackEnd|Nov02|Nov03-[Day25](#day25)-BackEnd|Nov04|
-|10|<span style="color:red">Nov07</span>-[Day26](#day26)-BackEnd|Nov08-[Day27](#day27)-BackEnd|Nov09|Nov10|Nov11|
-|11|Nov14-[Day28](#day28)-Query|<span style="color:red">Nov15</span>-[Day29](#day29)-Query|Nov16|Nov17-[Day30](#day30)-Query|Nov18|
-|12|Nov21-[Day31](#day31)-Crud|<span style="color:red">Nov22</span>-[Day32](#day32)-Crud|Nov23|Nov24-[Day33](#day33)-Crud|Nov25|
-|13|<span style="color:red">Nov28</span>-[Day34](#day34)-Query/Crud|Nov29-[Day35](#day35)-Project|Nov30|Dec01-[Day36](#day36)-Project|Dec02|
+|10|Nov07-[Day26](#day26)-FrontEnd/BackEnd|<span style="color:red">Nov08</span>-[Day27](#day27)-FrontEnd/BackEnd|Nov09|Nov10|Nov11|
+|11|Nov14-[Day28](#day28)-Query|Nov15-[Day29](#day29)-Query|Nov16|Nov17-[Day30](#day30)-Crud|Nov18|
+|12|Nov21-[Day31](#day31)-Crud|Nov22-[Day32](#day32)-Query/Crud|Nov23|<span style="color:red">Nov24</span>-[Day33](#day33)-Query/Crud|Nov25|
+|13|Nov28-[Day34](#day34)-Project|Nov29-[Day35](#day35)-Project|Nov30|Dec01-[Day36](#day36)-Project|Dec02|
 |14|Dec05-[Day37](#day37)-Project|Dec06-[Day38](#day38)-Project|Dec07|Dec08-[Day39](#day39)-Project|Dec09|
 |15|Dec12-[Day40](#day40)-Project|Dec13-[Day41](#day41)-Project|Dec14|<span style="color:red">Dec15</span>-[Day42](#day42)-Project||
 
@@ -174,7 +152,7 @@ OOP
 -	Review of WestWindSystem
 -	Review of TrainSystem Requirements
 
-Ex01 – Work Period to Complete Due 11:59 PM
+Ex01 – Work Period to Complete
 
 [Back to Top](#calendar)
 
@@ -188,7 +166,7 @@ OOP
 ## Day09 
 
 OOP
-- Lab 1 Work Period Due 11:59 PM
+- InClass 1 Work Period Due 11:59 PM
 
 [Back to Top](#calendar)
 
@@ -237,7 +215,7 @@ Ex02d – Reading JSON data from a file
 File IO
 -	Review of File I/O
 
-Ex02 – Work Period to Complete Due 11:59 PM
+Ex02 – Work Period to Complete
 
 [Back to Top](#calendar)
 
@@ -251,7 +229,7 @@ File IO
 ## Day16
 
 File IO
-- Lab 2 Work Period Due 11:59 PM
+- InClass 2 Work Period Due 11:59 PM
 
 [Back to Top](#calendar)
 
@@ -341,18 +319,6 @@ Ex03 – Front-End; HTML input; HTML select; HTML textarea; HTML checkbox; Conta
 
 ## Day21
 
-Front-End Razor Page WebApp
--	Review of WestWindWatch
--	Contact Page with forms
--	Review of TrainWatch
--	Contact Page Requirements
-
-Ex03 – Work Period to Complete Due 11:59 PM
-
-[Back to Top](#calendar)
-
-## Day22
-
 Back-End Class Library
 -	SQL Server Dev Edition
 -	SQL Server Management Studio
@@ -371,7 +337,7 @@ Ex04 – Back-End - Setup About Page for DbVersion
 
 [Back to Top](#calendar)
 
-## Day23
+## Day22
 
 Back-End Class Library
 -	review entity requirements for WestWind
@@ -388,7 +354,7 @@ Ex04 – Back-End - Entities About Page for DbVersion
 
 [Back to Top](#calendar)
 
-## Day24
+## Day23
 
 Back-End Class Library
 -	WestWindContext.cs
@@ -402,7 +368,7 @@ Ex04 – Back-End – DAL/BLL About Page for DbVersion
 
 [Back to Top](#calendar)
 
-## Day25
+## Day24
 
 Back-End Class Library
 -	dbversion service
@@ -417,7 +383,7 @@ Ex04 – Back-End – BLL About Page for DbVersion
 
 [Back to Top](#calendar)
 
-## Day26
+## Day25
 
 Back-End Class Library
 -	Review of WestWindWatch
@@ -425,11 +391,25 @@ Back-End Class Library
 -	Review of TrainWatch
 -	About Page Requirements
 
-Ex04 – Work Period to Complete Due 11:59 PM
+Ex04 – Work Period to Complete
+
+[Back to Top](#calendar)
+
+## Day26
+
+Front-End Razor Page WebApp & Back-End Class Library
+- Review of my solution to Ex03 & Ex04
 
 [Back to Top](#calendar)
 
 ## Day27
+
+Front-End Razor Page WebApp & Back-End Class Library
+- InClass 3 Work Period Due 11:59 PM
+
+[Back to Top](#calendar)
+
+## Day28
 
 Query
 -	Overview of WestWindWatch
@@ -440,7 +420,7 @@ Ex05 – Query – Rolling Stock search by Train Car Type
 
 [Back to Top](#calendar)
 
-## Day28
+## Day29
 
 Query
 -	Overview of WestWindWatch
@@ -451,16 +431,6 @@ Query
 -	Query Page
 
 Ex05 – Query – Rolling Stock search by Reporting Mark Partial String 
-
-[Back to Top](#calendar)
-
-## Day29 
-
-Query
--	Review of WestWindWatch
--	Query Page
-
-Ex05 – Work Period to Complete Due 11:59 PM
 
 [Back to Top](#calendar)
 
@@ -490,24 +460,22 @@ Ex06 – Crud – Update & Delete
 
 ## Day32
 
-Crud
--	Review of TrainWatch Crud Page
-
-Ex06 – Crud – Work Period to Complete Due 11:59 PM
+Query/Crud
+- Review of my solution to Ex05 & Ex06
 
 [Back to Top](#calendar)
 
 ## Day33
 
 Query/Crud
-- Review of my solution to Ex05 & Ex06
+- InClass 4 Work Period Due 11:59 PM
 
 [Back to Top](#calendar)
 
 ## Day34
 
-Query/Crud
-- Lab 3 Work Period Due 11:59 PM
+Project
+- Work Period
 
 [Back to Top](#calendar)
 
