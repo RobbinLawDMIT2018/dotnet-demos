@@ -4,16 +4,16 @@
 
 |Assessment Name|Description|Weight|Due Date|
 |:-:|:-:|:-:|:-:|
-|Exercises-1|OOP & File IO Multiple Choice Quiz on Moodle|10|11:59 PM [Day09](#day09)|
-|Exercises-2|Query/Crud Multiple Choice Quiz on Moodle|10|11:59 PM [Day16](#day16)|
 |InClass-1 OOP Foundations||10|11:59 PM [Day09](#day09)|
 |InClass-2 OOP and Database||15|11:59 PM [Day16](#day16)|
+|Exercises-1|OOP & File IO Multiple Choice Quiz on Moodle|10|11:59 PM [Day16](#day16)|
 |InClass-3 Website Forms||10|11:59 PM [Day27](#day27)|
 |InClass-4 CRUD and Client-Server||10|11:59 PM [Day33](#day33)|
-|Project-Deliverable-A Planning||5|11:59 PM [Day42](#day42)|
-|Project-Deliverable-B Setup||5|11:59 PM [Day42](#day42)|
-|Project-Deliverable-C Data Query||10|11:59 PM [Day42](#day42)|
-|Project-Deliverable-D Crud Maintenance||15|11:59 PM [Day42](#day42)|
+|Exercises-2|Query/Crud Multiple Choice Quiz on Moodle|10|11:59 PM [Day33](#day33)|
+|Project-Deliverable-A Planning||5|4:59 PM [Day42](#day42)|
+|Project-Deliverable-B Setup||5|4:59 PM [Day42](#day42)|
+|Project-Deliverable-C Data Query||10|4:59 PM [Day42](#day42)|
+|Project-Deliverable-D Crud Maintenance||15|4:59 PM [Day42](#day42)|
 ||Total|100||
 
 ## Calendar
