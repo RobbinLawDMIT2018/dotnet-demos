@@ -2,18 +2,26 @@
 
 ## Assessments
 
-|Assessment Name|Description|Weight|Due Date|
+|Assessment Name|Description|Weight in Percent|Done/Due in Week|
 |:-:|:-:|:-:|:-:|
-|InClass-1 OOP Foundations||10|11:59 PM [Day09](#day09)|
-|InClass-2 OOP and Database||15|11:59 PM [Day16](#day16)|
-|Exercises-1|OOP & File IO Multiple Choice Quiz on Moodle|10|11:59 PM [Day16](#day16)|
-|InClass-3 Website Forms||10|11:59 PM [Day27](#day27)|
-|InClass-4 CRUD and Client-Server||10|11:59 PM [Day33](#day33)|
-|Exercises-2|Query/Crud Multiple Choice Quiz on Moodle|10|11:59 PM [Day33](#day33)|
-|Project-Deliverable-A Planning||5|4:59 PM [Day42](#day42)|
-|Project-Deliverable-B Setup||5|4:59 PM [Day42](#day42)|
-|Project-Deliverable-C Data Query||10|4:59 PM [Day42](#day42)|
-|Project-Deliverable-D Crud Maintenance||15|4:59 PM [Day42](#day42)|
+|Exercise-1 OOP and Composition|OOP|2|5|
+|Exercise-2 OOP Parsing and String Manipulation|File IO with TryParse|2|6|
+|Exercise-3 Console Database Access|File IO with TryParse|2|7|
+|Exercise-4 Web Application Project Setup and Form Input|FrontEnd with Contact Page|2|9|
+|Exercise-5 Database and Client-Server Setup|BackEnd with About Page|2|10|
+|Exercise-6 File Upload and Tabular Output|Query|2|11|
+|Exercise-7 Database Querying, Filtering, and Sorting|Query|2|12|
+|Exercise-8 Database Query for Detail Information|Query|2|13|
+|Exercise-9 Database Inserting|Crud|2|14|
+|Exercise-10 Database Update/Delete|Crud|2|15|
+|InClass-1 OOP Foundations|OOP|10|6|
+|InClass-2 OOP and Database|File IO with TryParse|15|8|
+|InClass-3 Website Forms|Query|10|11|
+|InClass-4 CRUD and Client-Server|Crud|10|14|
+|Project-Deliverable-1 Planning||5||
+|Project-Deliverable-2 Setup||5||
+|Project-Deliverable-3 Data Query||10||
+|Project-Deliverable-4 Crud Maintenance||15||
 ||Total|100||
 
 ## Calendar
@@ -23,19 +31,19 @@
 |0||||Sep01-[Day01](#day01)-Intro|Sep02|
 |1|Sep05|Sep06-[Day02](#day02)-OOP|Sep07|Sep08-[Day03](#day03)-OOP|Sep09|
 |2|Sep12-[Day04](#day04)-OOP|Sep13-[Day05](#day05)-OOP|Sep14|Sep15-[Day06](#day06)-OOP|Sep16|
-|3|Sep19-[Day07](#day07)-OOP|Sep20-[Day08](#day08)-OOP|Sep21|<span style="color:red">Sep22</span>-[Day09](#day09)-OOP|Sep23|
+|3|Sep19-[Day07](#day07)-OOP|Sep20-[Day08](#day08)-OOP|Sep21|Sep22-[Day09](#day09)-OOP|Sep23|
 |4|Sep26-[Day10](#day10)-FileIO|Sep27-[Day11](#day11)-FileIO|Sep28|Sep29-[Day12](#day12)-FileIO|Sep30|
 |5|Oct03-[Day13](#day13)-FileIO|Oct04-[Day14](#day14)-FileIO|Oct05|Oct06-[Day15](#day15)-FileIO|Oct07|
-|6|Oct10|Oct11|Oct12|<span style="color:red">Oct13</span>Oct13-[Day16](#day16)-FileIO|Oct14|
+|6|Oct10|Oct11|Oct12|Oct13Oct13-[Day16](#day16)-FileIO|Oct14|
 |7|Oct17-[Day17](#day17)-FrontEnd|Oct18-[Day18](#day18)-FrontEnd|Oct19|Oct20-[Day19](#day19)-FrontEnd|Oct21|
 |8|Oct24-[Day20](#day20)-FrontEnd|Oct25-[Day21](#day21)-BackEnd|Oct26|Oct27-[Day22](#day22)-BackEnd|Oct28|
 |9|Oct31-[Day23](#day23)-BackEnd|Nov01-[Day24](#day24)-BackEnd|Nov02|Nov03-[Day25](#day25)-BackEnd|Nov04|
-|10|Nov07-[Day26](#day26)-FrontEnd/BackEnd|<span style="color:red">Nov08</span>-[Day27](#day27)-FrontEnd/BackEnd|Nov09|Nov10|Nov11|
+|10|Nov07-[Day26](#day26)-FrontEnd/BackEnd|Nov08-[Day27](#day27)-FrontEnd/BackEnd|Nov09|Nov10|Nov11|
 |11|Nov14-[Day28](#day28)-Query|Nov15-[Day29](#day29)-Query|Nov16|Nov17-[Day30](#day30)-Crud|Nov18|
-|12|Nov21-[Day31](#day31)-Crud|Nov22-[Day32](#day32)-Query/Crud|Nov23|<span style="color:red">Nov24</span>-[Day33](#day33)-Query/Crud|Nov25|
+|12|Nov21-[Day31](#day31)-Crud|Nov22-[Day32](#day32)-Query/Crud|Nov23|Nov24-[Day33](#day33)-Query/Crud|Nov25|
 |13|Nov28-[Day34](#day34)-Project|Nov29-[Day35](#day35)-Project|Nov30|Dec01-[Day36](#day36)-Project|Dec02|
 |14|Dec05-[Day37](#day37)-Project|Dec06-[Day38](#day38)-Project|Dec07|Dec08-[Day39](#day39)-Project|Dec09|
-|15|Dec12-[Day40](#day40)-Project|Dec13-[Day41](#day41)-Project|Dec14|<span style="color:red">Dec15</span>-[Day42](#day42)-Project||
+|15|Dec12-[Day40](#day40)-Project|Dec13-[Day41](#day41)-Project|Dec14|Dec15-[Day42](#day42)-Project||
 
 ## Day01
 
